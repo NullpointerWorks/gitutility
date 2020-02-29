@@ -1,0 +1,33 @@
+D:\Development\C#\workspace\VisualStudio\appGitUtility\Git Utility\Git Utility\bin\x64\Debug\GitUtility.exe
+D:\Development\C#\workspace\VisualStudio\appGitUtility\Git Utility\Git Utility\bin\x64\Debug\GitUtility.pdb
+D:\Development\C#\workspace\VisualStudio\appGitUtility\Git Utility\Git Utility\obj\x64\Debug\GitUtility.Properties.Resources.resources
+D:\Development\C#\workspace\VisualStudio\appGitUtility\Git Utility\Git Utility\obj\x64\Debug\Git Utility.csproj.GenerateResource.cache
+D:\Development\C#\workspace\VisualStudio\appGitUtility\Git Utility\Git Utility\obj\x64\Debug\Git Utility.csproj.CoreCompileInputs.cache
+D:\Development\C#\workspace\VisualStudio\appGitUtility\Git Utility\Git Utility\obj\x64\Debug\Git Utility.csproj.CopyComplete
+D:\Development\C#\workspace\VisualStudio\appGitUtility\Git Utility\Git Utility\obj\x64\Debug\GitUtility.exe
+D:\Development\C#\workspace\VisualStudio\appGitUtility\Git Utility\Git Utility\obj\x64\Debug\GitUtility.pdb
+D:\Development\C#\workspace\VisualStudio\appGitUtility\Git Utility\Git Utility\bin\x64\Debug\Renci.SshNet.dll
+D:\Development\C#\workspace\VisualStudio\appGitUtility\Git Utility\Git Utility\bin\x64\Debug\Renci.SshNet.xml
+D:\Development\C#\workspace\VisualStudio\appGitUtility\Git Utility\Git Utility\obj\x64\Debug\GitUtility.Forms.FormConfigServers.resources
+D:\Development\C#\workspace\VisualStudio\appGitUtility\Git Utility\Git Utility\obj\x64\Debug\GitUtility.Forms.FormGitUtility.resources
+D:\Development\C#\workspace\VisualStudio\appGitUtility\Git Utility\Git Utility\obj\x64\Debug\Git Utility.csprojAssemblyReference.cache
+D:\Development\C#\workspace\VisualStudio\appGitUtility\Git Utility\Git Utility\obj\x64\Debug\GitUtility.Forms.FormConfigRepos.resources
+D:\Development\C#\workspace\VisualStudio\appGitUtility\Git Utility\Git Utility\obj\x64\Debug\GitUtility.Forms.FormTerminal.resources
+D:\Development\C#\workspace\VisualStudio\appGitUtility\Git Utility\Git Utility\obj\x64\Debug\GitUtility.Forms.FormNewRepo.resources
+D:\Development\C#\workspace\VisualStudio\appGitUtility\Git Utility\Git Utility\obj\x64\Debug\GitUtility.Forms.FormCloneRepo.resources
+V:\Development\Csharp\workspace\VisualStudio\appGitUtility\Git Utility\Git Utility\bin\x64\Debug\GitUtility.exe
+V:\Development\Csharp\workspace\VisualStudio\appGitUtility\Git Utility\Git Utility\bin\x64\Debug\GitUtility.pdb
+V:\Development\Csharp\workspace\VisualStudio\appGitUtility\Git Utility\Git Utility\bin\x64\Debug\Renci.SshNet.dll
+V:\Development\Csharp\workspace\VisualStudio\appGitUtility\Git Utility\Git Utility\bin\x64\Debug\Renci.SshNet.xml
+V:\Development\Csharp\workspace\VisualStudio\appGitUtility\Git Utility\Git Utility\obj\x64\Debug\Git Utility.csprojAssemblyReference.cache
+V:\Development\Csharp\workspace\VisualStudio\appGitUtility\Git Utility\Git Utility\obj\x64\Debug\GitUtility.Forms.FormCloneRepo.resources
+V:\Development\Csharp\workspace\VisualStudio\appGitUtility\Git Utility\Git Utility\obj\x64\Debug\GitUtility.Forms.FormConfigServers.resources
+V:\Development\Csharp\workspace\VisualStudio\appGitUtility\Git Utility\Git Utility\obj\x64\Debug\GitUtility.Forms.FormGitUtility.resources
+V:\Development\Csharp\workspace\VisualStudio\appGitUtility\Git Utility\Git Utility\obj\x64\Debug\GitUtility.Forms.FormConfigRepos.resources
+V:\Development\Csharp\workspace\VisualStudio\appGitUtility\Git Utility\Git Utility\obj\x64\Debug\GitUtility.Forms.FormNewRepo.resources
+V:\Development\Csharp\workspace\VisualStudio\appGitUtility\Git Utility\Git Utility\obj\x64\Debug\GitUtility.Forms.FormTerminal.resources
+V:\Development\Csharp\workspace\VisualStudio\appGitUtility\Git Utility\Git Utility\obj\x64\Debug\GitUtility.Properties.Resources.resources
+V:\Development\Csharp\workspace\VisualStudio\appGitUtility\Git Utility\Git Utility\obj\x64\Debug\Git Utility.csproj.GenerateResource.cache
+V:\Development\Csharp\workspace\VisualStudio\appGitUtility\Git Utility\Git Utility\obj\x64\Debug\Git Utility.csproj.CopyComplete
+V:\Development\Csharp\workspace\VisualStudio\appGitUtility\Git Utility\Git Utility\obj\x64\Debug\GitUtility.exe
+V:\Development\Csharp\workspace\VisualStudio\appGitUtility\Git Utility\Git Utility\obj\x64\Debug\GitUtility.pdb

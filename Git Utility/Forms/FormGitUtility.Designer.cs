@@ -51,11 +51,28 @@
             this.TextBoxCommitMessage = new System.Windows.Forms.TextBox();
             this.TextBoxChangeDetails = new System.Windows.Forms.TextBox();
             this.ButtonPushCommits = new System.Windows.Forms.Button();
+            this.programToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.configurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.repositoriesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.serversToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.terminalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.newRepositoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cloneRepositoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addLocalRepositoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.MenuStripGitUtility.SuspendLayout();
             this.SuspendLayout();
             // 
             // MenuStripGitUtility
             // 
+            this.MenuStripGitUtility.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.programToolStripMenuItem1,
+            this.configurationToolStripMenuItem,
+            this.infoToolStripMenuItem});
             this.MenuStripGitUtility.Location = new System.Drawing.Point(0, 0);
             this.MenuStripGitUtility.Name = "MenuStripGitUtility";
             this.MenuStripGitUtility.Size = new System.Drawing.Size(626, 24);
@@ -245,6 +262,95 @@
             this.ButtonPushCommits.UseVisualStyleBackColor = true;
             this.ButtonPushCommits.Click += new System.EventHandler(this.ButtonPushCommits_Click);
             // 
+            // programToolStripMenuItem1
+            // 
+            this.programToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newRepositoryToolStripMenuItem,
+            this.cloneRepositoryToolStripMenuItem,
+            this.addLocalRepositoryToolStripMenuItem,
+            this.toolStripSeparator5,
+            this.exitToolStripMenuItem});
+            this.programToolStripMenuItem1.Name = "programToolStripMenuItem1";
+            this.programToolStripMenuItem1.Size = new System.Drawing.Size(65, 20);
+            this.programToolStripMenuItem1.Text = "Program";
+            // 
+            // configurationToolStripMenuItem
+            // 
+            this.configurationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.repositoriesToolStripMenuItem,
+            this.serversToolStripMenuItem,
+            this.toolStripSeparator4,
+            this.terminalToolStripMenuItem});
+            this.configurationToolStripMenuItem.Name = "configurationToolStripMenuItem";
+            this.configurationToolStripMenuItem.Size = new System.Drawing.Size(93, 20);
+            this.configurationToolStripMenuItem.Text = "Configuration";
+            // 
+            // infoToolStripMenuItem
+            // 
+            this.infoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutToolStripMenuItem1});
+            this.infoToolStripMenuItem.Name = "infoToolStripMenuItem";
+            this.infoToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
+            this.infoToolStripMenuItem.Text = "Info";
+            // 
+            // aboutToolStripMenuItem1
+            // 
+            this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
+            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.aboutToolStripMenuItem1.Text = "About";
+            // 
+            // repositoriesToolStripMenuItem
+            // 
+            this.repositoriesToolStripMenuItem.Name = "repositoriesToolStripMenuItem";
+            this.repositoriesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.repositoriesToolStripMenuItem.Text = "Repositories";
+            // 
+            // serversToolStripMenuItem
+            // 
+            this.serversToolStripMenuItem.Name = "serversToolStripMenuItem";
+            this.serversToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.serversToolStripMenuItem.Text = "Servers";
+            // 
+            // terminalToolStripMenuItem
+            // 
+            this.terminalToolStripMenuItem.Name = "terminalToolStripMenuItem";
+            this.terminalToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.terminalToolStripMenuItem.Text = "Terminal";
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(177, 6);
+            // 
+            // newRepositoryToolStripMenuItem
+            // 
+            this.newRepositoryToolStripMenuItem.Name = "newRepositoryToolStripMenuItem";
+            this.newRepositoryToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.newRepositoryToolStripMenuItem.Text = "New Repository";
+            // 
+            // cloneRepositoryToolStripMenuItem
+            // 
+            this.cloneRepositoryToolStripMenuItem.Name = "cloneRepositoryToolStripMenuItem";
+            this.cloneRepositoryToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.cloneRepositoryToolStripMenuItem.Text = "Clone Repository";
+            // 
+            // addLocalRepositoryToolStripMenuItem
+            // 
+            this.addLocalRepositoryToolStripMenuItem.Name = "addLocalRepositoryToolStripMenuItem";
+            this.addLocalRepositoryToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.addLocalRepositoryToolStripMenuItem.Text = "Add Local Repository";
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(183, 6);
+            // 
             // FormGitUtility
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -295,5 +401,18 @@
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem MenuItemShowVersion;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem programToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem configurationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem infoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem newRepositoryToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cloneRepositoryToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addLocalRepositoryToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem repositoriesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem serversToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripMenuItem terminalToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem1;
     }
 }

@@ -115,6 +115,7 @@
       <DependentUpon>FormTerminal.cs</DependentUpon>
     </Compile>
     <Compile Include="Source\ApplicationConstant.cs" />
+    <Compile Include="Source\CommandLine\Executable.cs" />
     <Compile Include="Source\Config\RepoDetails.cs" />
     <Compile Include="Source\Config\ReposConfig.cs" />
     <Compile Include="Source\Config\ServersConfig.cs" />

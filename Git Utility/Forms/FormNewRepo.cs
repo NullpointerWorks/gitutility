@@ -1,4 +1,5 @@
-﻿using GitUtility.Config;
+﻿using GitUtility.CommandLine;
+using GitUtility.Config;
 using GitUtility.Event;
 using GitUtility.Git;
 using GitUtility.Remote;
@@ -134,7 +135,8 @@ namespace GitUtility.Forms
             // make and run the script for initializing a new local repo
             string remoteDir = sd.GetServerLoginString() + "/" + repoName;
             ScriptBuilder.NewScript(repoName, localDir, remoteDir);
-            Process.Start("expect.exe", "new.lua");
+            Executable exe = new Executable("expect.exe", "new.lua").Start();
+            exe.WaitForExit();
 
             // add new repo to configuration
             ReposConfig.GetInstance().AddRepoDetails(repoName, sd.GetName(), repoName, localDir, false);

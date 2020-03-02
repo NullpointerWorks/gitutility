@@ -56,10 +56,6 @@
             // 
             // MenuStripGitUtility
             // 
-            this.MenuStripGitUtility.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.programToolStripMenuItem,
-            this.MenuItemConnections,
-            this.aboutToolStripMenuItem});
             this.MenuStripGitUtility.Location = new System.Drawing.Point(0, 0);
             this.MenuStripGitUtility.Name = "MenuStripGitUtility";
             this.MenuStripGitUtility.Size = new System.Drawing.Size(626, 24);

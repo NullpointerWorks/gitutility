@@ -1,4 +1,4 @@
-cd D:/Development/C#/workspace/axtrongit/myTestRepo
+cd /D D:/Development/C#/workspace/axtrongit/myRepoTest
 git add -A
-git commit -am "adding icon"
+git commit -am "moved stuff"
 exit

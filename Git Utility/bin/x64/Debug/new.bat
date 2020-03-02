@@ -1,4 +1,4 @@
-cd D:/Development/C#/workspace/axtrongit/myTestRepo
+cd /D D:/Development/C#/workspace/axtrongit/myRepoTest
 git init
-git remote add origin pi@192.168.10.10:/media/usb1/git/myTestRepo
+git remote add myRepoTest pi@192.168.10.10:/media/usb1/git/myRepoTest
 exit

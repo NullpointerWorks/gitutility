@@ -1,4 +1,4 @@
-#myTestRepo
+#myRepoTest
 s:Axtron Git
-r:myTestRepo
-l:D:/Development/C#/workspace/axtrongit/myTestRepo
+r:myRepoTest
+l:D:/Development/C#/workspace/axtrongit/myRepoTest

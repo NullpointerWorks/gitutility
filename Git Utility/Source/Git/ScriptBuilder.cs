@@ -15,22 +15,15 @@ namespace GitUtility.Git
         {
             string[] lines = new string[]
             {
-                "cd "+localRepo, // jump to folder
+                "cd /D "+localRepo, // jump to folder
                 "git init", // initialize the folder as a git repository
                 "git remote add origin "+remoteRepo, // add a reference to the remote repository
                 "exit"
             };
             FileUtil.WriteToFileUTF8("new.bat", lines);
-            lines = new string[]
-            {
-                "echo(true)",
-                "if spawn([[new.bat]]) then",
-                "end"
-            };
-            FileUtil.WriteToFileUTF8("new.lua", lines);
-            return "new.lua";
+            return DefaultExecution("new");
         }
-        
+
         /// <summary>
         /// Restores missing files. Synchronizes with the remote repository.
         /// </summary>
@@ -38,24 +31,14 @@ namespace GitUtility.Git
         {
             string[] lines = new string[]
             {
-                "cd "+repo.GetLocal(), // jump to folder
+                "cd /D "+repo.GetLocal(), // jump to folder
                 "git fetch --prune origin",
-                "git reset --hard origin",
+                "git reset --hard master",
                 "git clean -f -d", 
                 "exit"
             };
             FileUtil.WriteToFileUTF8("fetch.bat", lines);
-            lines = new string[]
-            {
-                "echo(true)",
-                "if spawn([[fetch.bat]]) then",
-                "    expect(\"password:\")",
-                "    echo(false)",
-                "    send(\""+sd.GetPass()+"\\r\")",
-                "end"
-            };
-            FileUtil.WriteToFileUTF8("fetch.lua", lines);
-            return "fetch.lua";
+            return DefaultLogin("fetch", sd);
         }
 
         /// <summary>
@@ -65,22 +48,12 @@ namespace GitUtility.Git
         {
             string[] lines = new string[]
             {
-                "cd "+localRepo,
+                "cd /D "+localRepo,
                 "git pull origin master",
                 "exit"
             };
             FileUtil.WriteToFileUTF8("pull.bat", lines);
-            lines = new string[]
-            {
-                "echo(true)",
-                "if spawn([[pull.bat]]) then",
-                "    expect(\"password:\")",
-                "    echo(false)",
-                "    send(\""+sd.GetPass()+"\\r\")",
-                "end"
-            };
-            FileUtil.WriteToFileUTF8("pull.lua", lines);
-            return "pull.lua";
+            return DefaultLogin("pull", sd);
         }
 
         /// <summary>
@@ -90,7 +63,7 @@ namespace GitUtility.Git
         {
             string[] lines = new string[]
             {
-                "cd "+rd.GetLocal(), // jump to folder
+                "cd /D "+rd.GetLocal(), // jump to folder
                 "git add -A", // stages all changes. "git add -A" is equivalent to "git add ." followed by "git add -u"
                 //"git add .", // stages new files and modifications, without deletions
                 //"git add -u", // stages modifications and deletions, without new files
@@ -98,14 +71,7 @@ namespace GitUtility.Git
                 "exit"
             };
             FileUtil.WriteToFileUTF8("commit.bat", lines);
-            lines = new string[]
-            {
-                "echo(true)",
-                "if spawn([[commit.bat]]) then",
-                "end"
-            };
-            FileUtil.WriteToFileUTF8("commit.lua", lines);
-            return "commit.lua";
+            return DefaultExecution("commit");
         }
 
         /// <summary>
@@ -115,22 +81,12 @@ namespace GitUtility.Git
         {
             string[] lines = new string[]
             {
-                "cd "+rd.GetLocal(), // jump to folder
+                "cd /D "+rd.GetLocal(), // jump to folder
                 "git push origin master", // upload to repository
                 "exit"
             };
             FileUtil.WriteToFileUTF8("push.bat", lines);
-            lines = new string[]
-            {
-                "echo(true)",
-                "if spawn([[push.bat]]) then",
-                "    expect(\"password:\")",
-                "    echo(false)",
-                "    send(\""+sd.GetPass()+"\\r\")",
-                "end"
-            };
-            FileUtil.WriteToFileUTF8("push.lua", lines);
-            return "push.lua";
+            return DefaultLogin("push", sd);
         }
 
         /// <summary>
@@ -140,24 +96,14 @@ namespace GitUtility.Git
         {
             string[] lines = new string[]
             {
-                "cd "+rd.GetLocal(), // jump to folder
+                "cd /D "+rd.GetLocal(), // jump to folder
                 "git add -A", // add all untracked, might make this optional later on
                 "git commit -am \""+message+"\"", // commit all changes with a message
                 "git push origin master", // upload to repository
                 "exit"
             };
             FileUtil.WriteToFileUTF8("commitpush.bat", lines);
-            lines = new string[]
-            {
-                "echo(true)",
-                "if spawn([[commitpush.bat]]) then",
-                "    expect(\"password:\")",
-                "    echo(false)",
-                "    send(\""+sd.GetPass()+"\\r\")",
-                "end"
-            };
-            FileUtil.WriteToFileUTF8("commitpush.lua", lines);
-            return "commitpush.lua";
+            return DefaultLogin("commitpush", sd);
         }
         
         /// <summary>
@@ -167,22 +113,47 @@ namespace GitUtility.Git
         {
             string[] lines = new string[]
             {
-                "cd "+localGit, // jump to local workspace
+                "cd /D "+localGit, // jump to local workspace
                 "git clone "+remoteRepo, // clone remote repo
                 "exit"
             };
             FileUtil.WriteToFileUTF8("clone.bat", lines);
-            lines = new string[]
+            return DefaultLogin("clone", sd);
+        }
+
+        // ==============================================================
+        
+        /**
+         * creates a simple login lua script
+         */
+        private static string DefaultLogin(string filename, ServerDetails sd)
+        {
+            var lines = new string[]
             {
                 "echo(true)",
-                "if spawn([[clone.bat]]) then",
+                "if spawn([["+filename+".bat]]) then",
                 "    expect(\"password:\")",
                 "    echo(false)",
                 "    send(\""+sd.GetPass()+"\\r\")",
                 "end"
             };
-            FileUtil.WriteToFileUTF8("clone.lua", lines);
-            return "clone.lua";
+            FileUtil.WriteToFileUTF8(filename + ".lua", lines);
+            return filename + ".lua";
+        }
+
+        /**
+         * creates an execution lua script
+         */
+        private static string DefaultExecution(string filename)
+        {
+            var lines = new string[]
+            {
+                "echo(true)",
+                "if spawn([["+filename+".bat]]) then",
+                "end"
+            };
+            FileUtil.WriteToFileUTF8(filename+".lua", lines);
+            return filename+".lua";
         }
     }
 }

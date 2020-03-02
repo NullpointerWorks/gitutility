@@ -1,4 +1,5 @@
-﻿using GitUtility.Config;
+﻿using GitUtility.CommandLine;
+using GitUtility.Config;
 using GitUtility.Event;
 using GitUtility.Git;
 using GitUtility.Remote;
@@ -172,8 +173,9 @@ namespace GitUtility.Forms
             
             // build and execute script
             ScriptBuilder.FetchScript(local, remote);
-            Process p = Process.Start("expect.exe", "fetch.lua");
-            p.WaitForExit(); // hold thread till update
+
+            Executable exe = new Executable("expect.exe", "fetch.lua").Start();
+            exe.WaitForExit(); // hold thread till update
 
             EventManager.Fire(EventCode.REFRESH_CHANGES); // refresh changelist
         }
@@ -212,8 +214,9 @@ namespace GitUtility.Forms
             
             // build and execute script
             ScriptBuilder.CommitScript(local, TextBoxCommitMessage.Text);
-            Process p = Process.Start("expect.exe", "commit.lua");
-            p.WaitForExit(); // hold thread till update
+            Executable exe = new Executable("expect.exe", "commit.lua").Start();
+            exe.WaitForExit();
+
 
             TextBoxCommitMessage.Text = "";
             EventManager.Fire(EventCode.REFRESH_CHANGES);
@@ -235,8 +238,8 @@ namespace GitUtility.Forms
 
             // build and execute script
             ScriptBuilder.PushScript(local, remote);
-            Process p = Process.Start("expect.exe", "push.lua");
-            p.WaitForExit(); // hold thread till update
+            Executable exe = new Executable("expect.exe", "push.lua").Start();
+            exe.WaitForExit();
 
             EventManager.Fire(EventCode.REFRESH_CHANGES);
         }

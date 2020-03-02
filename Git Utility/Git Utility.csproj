@@ -192,7 +192,6 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="git_icon.ico" />
     <Content Include="Resources\git_icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

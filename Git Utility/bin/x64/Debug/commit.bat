@@ -1,4 +1,4 @@
-cd D:\Development\C#\workspace\axtrongit\myNewRepo
+cd D:/Development/C#/workspace/axtrongit/myTestRepo
 git add -A
-git commit -am "adding the batch file again"
+git commit -am "adding icon"
 exit

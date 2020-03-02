@@ -41,7 +41,7 @@
             // 
             // ButtonCancel
             // 
-            this.ButtonCancel.Location = new System.Drawing.Point(262, 131);
+            this.ButtonCancel.Location = new System.Drawing.Point(262, 135);
             this.ButtonCancel.Name = "ButtonCancel";
             this.ButtonCancel.Size = new System.Drawing.Size(82, 32);
             this.ButtonCancel.TabIndex = 6;
@@ -63,7 +63,7 @@
             // 
             // ButtonAccept
             // 
-            this.ButtonAccept.Location = new System.Drawing.Point(145, 131);
+            this.ButtonAccept.Location = new System.Drawing.Point(145, 135);
             this.ButtonAccept.Name = "ButtonAccept";
             this.ButtonAccept.Size = new System.Drawing.Size(111, 32);
             this.ButtonAccept.TabIndex = 5;
@@ -83,22 +83,22 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 48);
+            this.label2.Location = new System.Drawing.Point(12, 50);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(78, 13);
+            this.label2.Size = new System.Drawing.Size(62, 13);
             this.label2.TabIndex = 5;
-            this.label2.Text = "Local Directory";
+            this.label2.Text = "Workspace";
             // 
             // TextBoxLocalDirectory
             // 
-            this.TextBoxLocalDirectory.Location = new System.Drawing.Point(12, 65);
+            this.TextBoxLocalDirectory.Location = new System.Drawing.Point(12, 66);
             this.TextBoxLocalDirectory.Name = "TextBoxLocalDirectory";
             this.TextBoxLocalDirectory.Size = new System.Drawing.Size(302, 20);
             this.TextBoxLocalDirectory.TabIndex = 2;
             // 
             // ButtonBrowse
             // 
-            this.ButtonBrowse.Location = new System.Drawing.Point(320, 65);
+            this.ButtonBrowse.Location = new System.Drawing.Point(323, 66);
             this.ButtonBrowse.Name = "ButtonBrowse";
             this.ButtonBrowse.Size = new System.Drawing.Size(24, 20);
             this.ButtonBrowse.TabIndex = 3;
@@ -109,7 +109,7 @@
             // ComboBoxSelectServer
             // 
             this.ComboBoxSelectServer.FormattingEnabled = true;
-            this.ComboBoxSelectServer.Location = new System.Drawing.Point(12, 104);
+            this.ComboBoxSelectServer.Location = new System.Drawing.Point(12, 107);
             this.ComboBoxSelectServer.Name = "ComboBoxSelectServer";
             this.ComboBoxSelectServer.Size = new System.Drawing.Size(332, 21);
             this.ComboBoxSelectServer.TabIndex = 4;
@@ -117,7 +117,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 88);
+            this.label3.Location = new System.Drawing.Point(12, 91);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(38, 13);
             this.label3.TabIndex = 17;
@@ -127,7 +127,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(356, 171);
+            this.ClientSize = new System.Drawing.Size(356, 174);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.ComboBoxSelectServer);
             this.Controls.Add(this.ButtonBrowse);

@@ -1,4 +1,4 @@
 #myTestRepo
 s:Axtron Git
 r:myTestRepo
-l:V:\Development\Assembly\workspace\jasm\playground
+l:D:/Development/C#/workspace/axtrongit/myTestRepo

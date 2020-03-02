@@ -57,7 +57,7 @@ namespace GitUtility.Forms
                         var inv = new MethodInvoker( delegate {RefreshServerComboBox();} );
                         ComboBoxSelectServer.Invoke(inv);
                     }
-                    else { RefreshServerComboBox(); }
+                    //else { RefreshServerComboBox(); }
                     break;
                     
                 default: break;
@@ -91,6 +91,7 @@ namespace GitUtility.Forms
             string server = ComboBoxSelectServer.GetItemText(ComboBoxSelectServer.SelectedItem);
             if (server == null) return;
             if (server.Equals("")) return;
+            localDir = localDir.Replace(@"\","/") +"/"+ repoName;
 
             // get server details
             var listitem = (ListItem)(ComboBoxSelectServer.SelectedItem);
@@ -119,7 +120,6 @@ namespace GitUtility.Forms
             }
             
             // make local directory
-            localDir = localDir + repoName;
             Directory.CreateDirectory(localDir);
 
             if (!Directory.Exists(localDir)) // error

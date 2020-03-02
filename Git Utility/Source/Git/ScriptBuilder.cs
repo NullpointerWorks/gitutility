@@ -17,7 +17,7 @@ namespace GitUtility.Git
             {
                 "cd "+localRepo, // jump to folder
                 "git init", // initialize the folder as a git repository
-                "git remote add "+repoName+" "+remoteRepo, // add a reference to the remote repository
+                "git remote add origin "+remoteRepo, // add a reference to the remote repository
                 "exit"
             };
             FileUtil.WriteToFileUTF8("new.bat", lines);
@@ -91,7 +91,9 @@ namespace GitUtility.Git
             string[] lines = new string[]
             {
                 "cd "+rd.GetLocal(), // jump to folder
-                "git add -A", // add all untracked, might make this optional later on
+                "git add -A", // stages all changes. "git add -A" is equivalent to "git add ." followed by "git add -u"
+                //"git add .", // stages new files and modifications, without deletions
+                //"git add -u", // stages modifications and deletions, without new files
                 "git commit -am \""+message+"\"", // commit all changes with a message
                 "exit"
             };
@@ -140,7 +142,7 @@ namespace GitUtility.Git
             {
                 "cd "+rd.GetLocal(), // jump to folder
                 "git add -A", // add all untracked, might make this optional later on
-                "git commit -a -m \""+message+"\"", // commit all changes with a message
+                "git commit -am \""+message+"\"", // commit all changes with a message
                 "git push origin master", // upload to repository
                 "exit"
             };
@@ -158,10 +160,6 @@ namespace GitUtility.Git
             return "commitpush.lua";
         }
         
-
-
-
-
         /// <summary>
         /// clones a remote repository to the provided git workspace
         /// </summary>

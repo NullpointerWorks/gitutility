@@ -1,4 +1,4 @@
 #myRepoTest
 s:Axtron Git
 r:myRepoTest
-l:D:/Development/C#/workspace/axtrongit/myRepoTest
+l:D:\Development\C#\workspace\axtrongit\myRepoTest

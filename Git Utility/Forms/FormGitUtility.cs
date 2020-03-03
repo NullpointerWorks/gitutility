@@ -56,42 +56,25 @@ namespace GitUtility.Forms
 
                 case EventCode.REFRESH_CHANGES:
                     // clear the change details. they're possibly invalid
-                    if (TextBoxChangeDetails.InvokeRequired)
+                    TextBoxChangeDetails.Invoke(new MethodInvoker(delegate
                     {
-                        TextBoxChangeDetails.Invoke(new MethodInvoker(delegate
-                        {
-                            TextBoxChangeDetails.Text = "";
-                        }));
-                    }
-                    else TextBoxChangeDetails.Text = "";
+                        TextBoxChangeDetails.Text = "";
+                    }));
 
                     var rcnf = ReposConfig.GetInstance();
                     Repository rep = new Repository(rcnf.GetSelected());
                     rep.CheckDifference();
                     
                     // update repository 
-                    if (ListBoxRepoChanges.InvokeRequired)
+                    ListBoxRepoChanges.Invoke(new MethodInvoker(delegate
                     {
-                        ListBoxRepoChanges.Invoke(new MethodInvoker(delegate
-                        {
-                            ListBoxRepoChanges.Items.Clear();
+                        ListBoxRepoChanges.Items.Clear();
+                        
 
+                        // TODO get update and display in listbox
+                        
 
-
-
-
-
-
-                            // TODO get update and display in listbox
-
-
-
-
-
-
-
-                        }));
-                    }
+                    }));
                     break;
 
                 default: break;
@@ -247,31 +230,15 @@ namespace GitUtility.Forms
         // ========================================================
         //          Menu Bar UI Events
         // ========================================================
-
-        private void MenuItemExit_Click(object sender, EventArgs e)
-        {
-            RemoteManager.GetInstance().DisconnectAll();
-            Application.Exit();
-        }
-
-        private void MenuItemReposConfig_Click(object sender, EventArgs e)
-        {
-            new FormConfigRepos().ShowDialog();
-        }
-
-        private void MenuItemConfigureServers_Click(object sender, EventArgs e)
-        {
-            new FormConfigServers().ShowDialog();
-        }
-
-        private void MenuItemOpenTerminal_Click(object sender, EventArgs e)
-        {
-            new FormTerminal().Show();
-        }
-
+        
         private void MenuItemNewRepo_Click(object sender, EventArgs e)
         {
             new FormNewRepo().ShowDialog();
+        }
+
+        private void MenuItemCloneRepo_Click(object sender, EventArgs e)
+        {
+            new FormCloneRepo().ShowDialog(); // TODO make clone dialog
         }
 
         private void MenuItemAddLocalRepo_Click(object sender, EventArgs e)
@@ -293,9 +260,25 @@ namespace GitUtility.Forms
             }
         }
 
-        private void MenuItemCloneRepo_Click(object sender, EventArgs e)
+        private void MenuItemExit_Click(object sender, EventArgs e)
         {
-            new FormCloneRepo().ShowDialog(); // TODO make clone dialog
+            RemoteManager.GetInstance().DisconnectAll();
+            Application.Exit();
+        }
+        
+        private void MenuItemReposConfig_Click(object sender, EventArgs e)
+        {
+            new FormConfigRepos().ShowDialog();
+        }
+
+        private void MenuItemConfigureServers_Click(object sender, EventArgs e)
+        {
+            new FormConfigServers().ShowDialog();
+        }
+
+        private void MenuItemOpenTerminal_Click(object sender, EventArgs e)
+        {
+            new FormTerminal().Show();
         }
 
         private void MenuItemShowVersion_Click(object sender, EventArgs e)

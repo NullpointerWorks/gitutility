@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.MenuStripGitUtility = new System.Windows.Forms.MenuStrip();
             this.programToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItemNewRepo = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
@@ -51,33 +50,22 @@
             this.TextBoxCommitMessage = new System.Windows.Forms.TextBox();
             this.TextBoxChangeDetails = new System.Windows.Forms.TextBox();
             this.ButtonPushCommits = new System.Windows.Forms.Button();
+            this.MenuStrip = new System.Windows.Forms.MenuStrip();
             this.programToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.configurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.repositoriesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.serversToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.terminalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newRepositoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cloneRepositoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addLocalRepositoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addRepositoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.configurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.repositoriesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.serverToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.terminalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.versionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.MenuStripGitUtility.SuspendLayout();
+            this.MenuStrip.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // MenuStripGitUtility
-            // 
-            this.MenuStripGitUtility.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.programToolStripMenuItem1,
-            this.configurationToolStripMenuItem,
-            this.infoToolStripMenuItem});
-            this.MenuStripGitUtility.Location = new System.Drawing.Point(0, 0);
-            this.MenuStripGitUtility.Name = "MenuStripGitUtility";
-            this.MenuStripGitUtility.Size = new System.Drawing.Size(626, 24);
-            this.MenuStripGitUtility.TabIndex = 8;
-            this.MenuStripGitUtility.Text = "menuStrip1";
             // 
             // programToolStripMenuItem
             // 
@@ -262,94 +250,114 @@
             this.ButtonPushCommits.UseVisualStyleBackColor = true;
             this.ButtonPushCommits.Click += new System.EventHandler(this.ButtonPushCommits_Click);
             // 
+            // MenuStrip
+            // 
+            this.MenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.programToolStripMenuItem1,
+            this.configurationToolStripMenuItem,
+            this.infoToolStripMenuItem});
+            this.MenuStrip.Location = new System.Drawing.Point(0, 0);
+            this.MenuStrip.Name = "MenuStrip";
+            this.MenuStrip.Size = new System.Drawing.Size(626, 24);
+            this.MenuStrip.TabIndex = 27;
+            this.MenuStrip.Text = "menuStrip1";
+            // 
             // programToolStripMenuItem1
             // 
             this.programToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newRepositoryToolStripMenuItem,
+            this.addRepositoryToolStripMenuItem,
             this.cloneRepositoryToolStripMenuItem,
-            this.addLocalRepositoryToolStripMenuItem,
-            this.toolStripSeparator5,
+            this.toolStripSeparator4,
             this.exitToolStripMenuItem});
             this.programToolStripMenuItem1.Name = "programToolStripMenuItem1";
             this.programToolStripMenuItem1.Size = new System.Drawing.Size(65, 20);
             this.programToolStripMenuItem1.Text = "Program";
             // 
-            // configurationToolStripMenuItem
+            // exitToolStripMenuItem
             // 
-            this.configurationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.repositoriesToolStripMenuItem,
-            this.serversToolStripMenuItem,
-            this.toolStripSeparator4,
-            this.terminalToolStripMenuItem});
-            this.configurationToolStripMenuItem.Name = "configurationToolStripMenuItem";
-            this.configurationToolStripMenuItem.Size = new System.Drawing.Size(93, 20);
-            this.configurationToolStripMenuItem.Text = "Configuration";
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.MenuItemExit_Click);
             // 
-            // infoToolStripMenuItem
+            // newRepositoryToolStripMenuItem
             // 
-            this.infoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aboutToolStripMenuItem1});
-            this.infoToolStripMenuItem.Name = "infoToolStripMenuItem";
-            this.infoToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
-            this.infoToolStripMenuItem.Text = "Info";
+            this.newRepositoryToolStripMenuItem.Name = "newRepositoryToolStripMenuItem";
+            this.newRepositoryToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.newRepositoryToolStripMenuItem.Text = "New Repository";
+            this.newRepositoryToolStripMenuItem.Click += new System.EventHandler(this.MenuItemNewRepo_Click);
             // 
-            // aboutToolStripMenuItem1
+            // cloneRepositoryToolStripMenuItem
             // 
-            this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
-            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.aboutToolStripMenuItem1.Text = "About";
+            this.cloneRepositoryToolStripMenuItem.Name = "cloneRepositoryToolStripMenuItem";
+            this.cloneRepositoryToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cloneRepositoryToolStripMenuItem.Text = "Clone Repository";
+            this.cloneRepositoryToolStripMenuItem.Click += new System.EventHandler(this.MenuItemCloneRepo_Click);
             // 
-            // repositoriesToolStripMenuItem
+            // addRepositoryToolStripMenuItem
             // 
-            this.repositoriesToolStripMenuItem.Name = "repositoriesToolStripMenuItem";
-            this.repositoriesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.repositoriesToolStripMenuItem.Text = "Repositories";
-            // 
-            // serversToolStripMenuItem
-            // 
-            this.serversToolStripMenuItem.Name = "serversToolStripMenuItem";
-            this.serversToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.serversToolStripMenuItem.Text = "Servers";
-            // 
-            // terminalToolStripMenuItem
-            // 
-            this.terminalToolStripMenuItem.Name = "terminalToolStripMenuItem";
-            this.terminalToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.terminalToolStripMenuItem.Text = "Terminal";
+            this.addRepositoryToolStripMenuItem.Name = "addRepositoryToolStripMenuItem";
+            this.addRepositoryToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addRepositoryToolStripMenuItem.Text = "Add Repository";
+            this.addRepositoryToolStripMenuItem.Click += new System.EventHandler(this.MenuItemAddLocalRepo_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(177, 6);
             // 
-            // newRepositoryToolStripMenuItem
+            // configurationToolStripMenuItem
             // 
-            this.newRepositoryToolStripMenuItem.Name = "newRepositoryToolStripMenuItem";
-            this.newRepositoryToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
-            this.newRepositoryToolStripMenuItem.Text = "New Repository";
+            this.configurationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.repositoriesToolStripMenuItem,
+            this.serverToolStripMenuItem,
+            this.toolStripSeparator5,
+            this.terminalToolStripMenuItem});
+            this.configurationToolStripMenuItem.Name = "configurationToolStripMenuItem";
+            this.configurationToolStripMenuItem.Size = new System.Drawing.Size(93, 20);
+            this.configurationToolStripMenuItem.Text = "Configuration";
             // 
-            // cloneRepositoryToolStripMenuItem
+            // repositoriesToolStripMenuItem
             // 
-            this.cloneRepositoryToolStripMenuItem.Name = "cloneRepositoryToolStripMenuItem";
-            this.cloneRepositoryToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
-            this.cloneRepositoryToolStripMenuItem.Text = "Clone Repository";
+            this.repositoriesToolStripMenuItem.Name = "repositoriesToolStripMenuItem";
+            this.repositoriesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.repositoriesToolStripMenuItem.Text = "Repositories";
+            this.repositoriesToolStripMenuItem.Click += new System.EventHandler(this.MenuItemReposConfig_Click);
             // 
-            // addLocalRepositoryToolStripMenuItem
+            // serverToolStripMenuItem
             // 
-            this.addLocalRepositoryToolStripMenuItem.Name = "addLocalRepositoryToolStripMenuItem";
-            this.addLocalRepositoryToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
-            this.addLocalRepositoryToolStripMenuItem.Text = "Add Local Repository";
+            this.serverToolStripMenuItem.Name = "serverToolStripMenuItem";
+            this.serverToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.serverToolStripMenuItem.Text = "Server";
+            this.serverToolStripMenuItem.Click += new System.EventHandler(this.MenuItemConfigureServers_Click);
             // 
-            // exitToolStripMenuItem
+            // terminalToolStripMenuItem
             // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
+            this.terminalToolStripMenuItem.Name = "terminalToolStripMenuItem";
+            this.terminalToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.terminalToolStripMenuItem.Text = "Terminal";
+            this.terminalToolStripMenuItem.Click += new System.EventHandler(this.MenuItemOpenTerminal_Click);
+            // 
+            // infoToolStripMenuItem
+            // 
+            this.infoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.versionToolStripMenuItem});
+            this.infoToolStripMenuItem.Name = "infoToolStripMenuItem";
+            this.infoToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
+            this.infoToolStripMenuItem.Text = "Info";
+            // 
+            // versionToolStripMenuItem
+            // 
+            this.versionToolStripMenuItem.Name = "versionToolStripMenuItem";
+            this.versionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.versionToolStripMenuItem.Text = "Version";
+            this.versionToolStripMenuItem.Click += new System.EventHandler(this.MenuItemShowVersion_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(183, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(177, 6);
             // 
             // FormGitUtility
             // 
@@ -364,21 +372,19 @@
             this.Controls.Add(this.ComboBoxBranches);
             this.Controls.Add(this.ListBoxRepoChanges);
             this.Controls.Add(this.ComboBoxAvailableRepos);
-            this.Controls.Add(this.MenuStripGitUtility);
+            this.Controls.Add(this.MenuStrip);
             this.KeyPreview = true;
-            this.MainMenuStrip = this.MenuStripGitUtility;
             this.Name = "FormGitUtility";
             this.Text = "Git Utility";
             this.Load += new System.EventHandler(this.FormGitUtility_Load);
-            this.MenuStripGitUtility.ResumeLayout(false);
-            this.MenuStripGitUtility.PerformLayout();
+            this.MenuStrip.ResumeLayout(false);
+            this.MenuStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.MenuStrip MenuStripGitUtility;
         private System.Windows.Forms.ToolStripMenuItem programToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem MenuItemExit;
         private System.Windows.Forms.ToolStripMenuItem MenuItemNewRepo;
@@ -401,18 +407,19 @@
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem MenuItemShowVersion;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.MenuStrip MenuStrip;
         private System.Windows.Forms.ToolStripMenuItem programToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem configurationToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem infoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem newRepositoryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cloneRepositoryToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem addLocalRepositoryToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
-        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem repositoriesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem serversToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addRepositoryToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripMenuItem configurationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem repositoriesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem serverToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem terminalToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem infoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem versionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
     }
 }

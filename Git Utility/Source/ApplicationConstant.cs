@@ -2,7 +2,7 @@
 {
     public class ApplicationConstant
     {
-        public static readonly string APP_VERSION   = "0.26 alpha";
+        public static readonly string APP_VERSION   = "0.27 alpha";
 
         public static readonly string PATH_SERVER   = "config/servers.txt";
         public static readonly string PATH_REPO     = "config/repos.txt";

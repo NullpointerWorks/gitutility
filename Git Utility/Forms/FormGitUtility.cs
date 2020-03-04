@@ -6,7 +6,6 @@ using GitUtility.Remote;
 using GitUtility.Util;
 
 using System;
-using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Threading;
@@ -37,21 +36,18 @@ namespace GitUtility.Forms
             {
                 // refreshes the repository list
                 case EventCode.REFRESH_REPOS:
-                    if (ComboBoxAvailableRepos.InvokeRequired)
+                    ComboBoxAvailableRepos.Invoke(new MethodInvoker(delegate
                     {
-                        ComboBoxAvailableRepos.Invoke(new MethodInvoker(delegate
-                        {
-                            ComboBoxAvailableRepos.Items.Clear();
-                            var cnf = ReposConfig.GetInstance();
+                        ComboBoxAvailableRepos.Items.Clear();
+                        var cnf = ReposConfig.GetInstance();
                             
-                            Iterator<RepoDetails> itsd = cnf.GetRepoDetails();
-                            while (itsd.HasNext())
-                            {
-                                RepoDetails sd = itsd.GetNext();
-                                ComboBoxAvailableRepos.Items.Add(sd.GetName());
-                            }
-                        }));
-                    }
+                        Iterator<RepoDetails> itsd = cnf.GetRepoDetails();
+                        while (itsd.HasNext())
+                        {
+                            RepoDetails sd = itsd.GetNext();
+                            ComboBoxAvailableRepos.Items.Add(sd.GetName());
+                        }
+                    }));
                     break;
 
                 case EventCode.REFRESH_CHANGES:

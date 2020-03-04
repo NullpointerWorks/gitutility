@@ -1,5 +1,7 @@
 ﻿using GitUtility.Command;
 using GitUtility.Config;
+using GitUtility.Util;
+
 using System.Collections.Generic;
 
 namespace GitUtility.Git
@@ -27,16 +29,30 @@ namespace GitUtility.Git
         {
             if (linker == null) return;
             scanNames = false;
+            
+            // lists files that should be in the repo
             Commander cmdr = new Commander(ApplicationConstant.PATH_CMD);
             cmdr.Start();
-            cmdr.Execute(@"cd " + linker.GetLocal());
             cmdr.SetPrintDelegate(Print);
-            cmdr.Execute(@"git ls-files"); // lists files that should be in the repo
+            cmdr.Execute(@"cd /D " + linker.GetLocal());
+            cmdr.Execute(@"git ls-files");
             cmdr.Execute(@"exit");
             cmdr.Close();
 
+            // check files actually in the repo
 
 
+
+
+
+        }
+
+        /**
+         * 
+         */
+        public Iterator<string> GetIterator()
+        {
+            return new Iterator<string>(remote);
         }
 
         /**
@@ -46,7 +62,7 @@ namespace GitUtility.Git
         {
             if (txt == null) return;
             if (txt.Equals("")) return;
-
+            
             if (txt.EndsWith("exit"))
             {
                 scanNames = false;

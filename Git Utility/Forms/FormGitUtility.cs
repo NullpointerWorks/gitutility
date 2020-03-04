@@ -65,11 +65,12 @@ namespace GitUtility.Forms
                     ListBoxRepoChanges.Invoke(new MethodInvoker(delegate
                     {
                         ListBoxRepoChanges.Items.Clear();
-                        
-
-                        // TODO get update and display in listbox
-                        
-
+                        Iterator<string> it = rep.GetIterator();
+                        //ListBoxRepoChanges.Items.Add("files: "+ it.Size());
+                        while (it.HasNext())
+                        {
+                            ListBoxRepoChanges.Items.Add( it.GetNext() );
+                        }
                     }));
                     break;
 
@@ -171,15 +172,12 @@ namespace GitUtility.Forms
             //DialogUtil.Message(selectedPath);
 
 
-
-
+            
             // TODO get changes in the selected file
 
             // TODO print changes in 'TextBoxChangeDetails.Text'
 
-
-
-
+            
 
         }
 

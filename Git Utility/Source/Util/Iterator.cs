@@ -32,6 +32,11 @@ namespace GitUtility.Util
             index = 0;
         }
 
+        public int Size()
+        {
+            return size;
+        }
+
         public void Dispose()
         {
             list = null;

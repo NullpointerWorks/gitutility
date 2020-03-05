@@ -59,23 +59,24 @@ namespace GitUtility.Git
             cmdr.Execute(@"exit");
             cmdr.Close();
 
-            // check files actually in the repo, and compare
+            /*/ check files actually in the repo, and compare
             string[] fileArray = Directory.GetFiles(dir, "*.*", SearchOption.AllDirectories);
             foreach (string f in fileArray)
             {
                 if (f.Contains(@"\.git")) continue; // ignore .git repo folder
-                
                 foreach (string r in remote)
                 {
-                    string remotefile = (name + @"\" + r).Replace("/", @"\");
-
-
-
-
+                    string remotefile = (@"\" + r).Replace("/", @"\");
+                    if (f.EndsWith(remotefile))
+                    {
+                        continue;
+                    }
                 }
-                
-
             }
+            //*/
+
+
+
 
 
         }

@@ -80,11 +80,8 @@ namespace GitUtility.Command
         
         public void Start()
         {
-            if (cmdProcess!=null)
-            {
-                Close();
-            }
-
+            if (cmdProcess != null) Close();
+            
             // setup process
             cmdProcess = new Process();
             cmdProcess.StartInfo = cmdStartInfo;
@@ -100,14 +97,16 @@ namespace GitUtility.Command
 
         public void Execute(string cmd)
         {
-            cmdProcess.StandardInput.Write(cmd+"\n");
+            cmdProcess.StandardInput.Write(cmd+"\r\n");
             cmdProcess.StandardInput.Flush();
         }
 
         public void Close()
         {
+            if (cmdProcess == null) return;
             if (WaitForExit) cmdProcess.WaitForExit();
             cmdProcess.Close();
+            cmdProcess = null;
         }
 
         public bool HasOutput()

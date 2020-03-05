@@ -66,7 +66,6 @@ namespace GitUtility.Forms
                     {
                         ListBoxRepoChanges.Items.Clear();
                         Iterator<string> it = rep.GetIterator();
-                        //ListBoxRepoChanges.Items.Add("files: "+ it.Size());
                         while (it.HasNext())
                         {
                             ListBoxRepoChanges.Items.Add( it.GetNext() );

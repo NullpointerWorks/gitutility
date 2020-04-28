@@ -11,13 +11,13 @@ namespace GitUtility.Git
         /// <summary>
         /// new a script to create a new local repository
         /// </summary>
-        public static string NewScript(RepoDetails repo)
+        public static string NewScript(RepoDetails rd)
         {
             string[] lines = new string[]
             {
-                "cd /D "+repo.GetLocal(), // jump to folder
+                "cd /D "+rd.GetLocal(), // jump to folder
                 "git init", // initialize the folder as a git repository
-                "git remote add "+repo.GetName()+" "+repo.GetRemote(), // add a reference to the remote repository
+                "git remote add "+rd.GetName()+" "+rd.GetRemote(), // add a reference to the remote repository
                 "exit"
             };
             FileUtil.WriteToFileUTF8("new.bat", lines);
@@ -109,12 +109,12 @@ namespace GitUtility.Git
         /// <summary>
         /// clones a remote repository to the provided git workspace
         /// </summary>
-        public static string CloneScript(string localGit, string remoteRepo, ServerDetails sd)
+        public static string CloneScript(RepoDetails rd, ServerDetails sd)
         {
             string[] lines = new string[]
             {
-                "cd /D "+localGit, // jump to local workspace
-                "git clone "+remoteRepo, // clone remote repo
+                "cd /D "+rd.GetLocal(), // jump to local workspace
+                "git clone "+rd.GetRemote(), // clone remote repo
                 "exit"
             };
             FileUtil.WriteToFileUTF8("clone.bat", lines);

@@ -8,5 +8,7 @@
         public static readonly string PATH_REPO     = "config/repos.txt";
         public static readonly string PATH_LOGO     = "git_icon.ico";
         public static readonly string PATH_CMD      = @"C:\Windows\System32\cmd.exe";
+
+        public static readonly string COMMIT_GREYTEXT = "Commit Description";
     }
 }

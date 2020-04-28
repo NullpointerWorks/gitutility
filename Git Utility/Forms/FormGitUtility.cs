@@ -83,7 +83,7 @@ namespace GitUtility.Forms
         
         public void OnWatcherEvent(WatcherChangeTypes type, string msg)
         {
-            Thread.Sleep(500); // delay so not to load the CPU to much when lots of changes occur
+            Thread.Sleep(250); // delay so not to load the CPU to much when lots of changes occur
             EventManager.Fire(EventCode.REFRESH_CHANGES);
         }
 
@@ -98,7 +98,6 @@ namespace GitUtility.Forms
         {
             TextBoxChangeDetails.ReadOnly = true;
             TextBoxChangeDetails.BackColor = SystemColors.Window;
-            
             EventManager.Fire(EventCode.REFRESH_SERVERS);
             EventManager.Fire(EventCode.REFRESH_REPOS);
         }
@@ -107,20 +106,23 @@ namespace GitUtility.Forms
         {
             if (((TextBox)sender).Text == "")
             {
-                TextBoxCommitMessage.Text = "Commit Description";
+                TextBoxCommitMessage.Text = ApplicationConstant.COMMIT_GREYTEXT;
                 TextBoxCommitMessage.ForeColor = Color.Gray;
             }
         }
         
         private void TextBoxCommitMessage_Clicked(object sender, MouseEventArgs e)
         {
-            if (((TextBox)sender).Text == "Commit Description")
+            if (((TextBox)sender).Text == ApplicationConstant.COMMIT_GREYTEXT)
             {
                 TextBoxCommitMessage.Text = "";
                 TextBoxCommitMessage.ForeColor = Color.Black;
             }
         }
         
+        /// <summary>
+        /// When a repository has been selected, start a systemwatcher to look for live updates.
+        /// </summary>
         private void ComboBoxAvailableRepos_SelectedIndexChanged(object sender, EventArgs e)
         {
             int index = ComboBoxAvailableRepos.SelectedIndex;
@@ -138,27 +140,35 @@ namespace GitUtility.Forms
 
         private void ButtonFetch_Click(object sender, EventArgs e)
         {
-            ReposConfig lcnf = ReposConfig.GetInstance();
-            RepoDetails local = lcnf.GetSelected();
+            RepoDetails local = ReposConfig.GetInstance().GetSelected();
+            if (local == null)
+            {
+                DialogUtil.Message("Please select a repository before fetching.");
+                return;
+            }
 
-            ServersConfig rcnf = ServersConfig.GetInstance();
-            ServerDetails remote = rcnf.GetServerDetailsByName(local.GetServer());
-
+            ServerDetails remote = ServersConfig.GetInstance().GetServerDetailsByName(local.GetServer());
             if (remote == null)
             {
-                DialogUtil.Message("Server \"" + local.GetServer() + "\" is not available");
+                DialogUtil.Message("Server \"" + local.GetServer() + "\" is not available.");
                 return;
             }
             
             // build and execute script
             ScriptBuilder.FetchScript(local, remote);
-
             Executable exe = new Executable("expect.exe", "fetch.lua").Start();
             exe.WaitForExit(); // hold thread till update
 
             EventManager.Fire(EventCode.REFRESH_CHANGES); // refresh changelist
         }
 
+        /// <summary>
+        /// The listbox shows all modified files. Currently, it just shows the content of the repo
+        /// 
+        /// TODO
+        /// 
+        /// 
+        /// </summary>
         private void ListBoxRepoChanges_SelectedIndexChanged(object sender, EventArgs e)
         {
             var item = ListBoxRepoChanges.SelectedItem;
@@ -180,39 +190,53 @@ namespace GitUtility.Forms
 
         }
 
+        /// <summary>
+        /// Creates and executes a commit script based on the currently selected repository.
+        /// </summary>
         private void ButtonCommitChanges_Click(object sender, EventArgs e)
         {
             string commitmsg = TextBoxCommitMessage.Text;
-            if (commitmsg.Equals("")) return;
-            
-            ReposConfig lcnf = ReposConfig.GetInstance();
-            RepoDetails local = lcnf.GetSelected();
-            
-            // build and execute script
-            ScriptBuilder.CommitScript(local, TextBoxCommitMessage.Text);
-            Executable exe = new Executable("expect.exe", "commit.lua").Start();
-            exe.WaitForExit();
-
-
-            TextBoxCommitMessage.Text = "";
-            EventManager.Fire(EventCode.REFRESH_CHANGES);
-        }
-
-        private void ButtonPushCommits_Click(object sender, EventArgs e)
-        {
-            ReposConfig lcnf = ReposConfig.GetInstance();
-            RepoDetails local = lcnf.GetSelected();
-
-            ServersConfig rcnf = ServersConfig.GetInstance();
-            ServerDetails remote = rcnf.GetServerDetailsByName(local.GetServer());
-
-            if (remote == null)
+            if (commitmsg.Equals("") || commitmsg.Equals(ApplicationConstant.COMMIT_GREYTEXT))
             {
-                DialogUtil.Message("Server \"" + local.GetServer() + "\" is not available");
+                DialogUtil.Message("Commit Error","Please add a commit message before committing.");
                 return;
             }
 
-            // build and execute script
+            RepoDetails repo = ReposConfig.GetInstance().GetSelected();
+            if (repo == null)
+            {
+                DialogUtil.Message("Commit Error", "Please select a repository to commit to.");
+                return;
+            }
+
+            ScriptBuilder.CommitScript(repo, TextBoxCommitMessage.Text);
+            Executable exe = new Executable("expect.exe", "commit.lua").Start();
+            exe.WaitForExit();
+            
+            TextBoxCommitMessage.Text = ""; // will not show greytext
+            TextBoxCommitMessage_Validate(TextBoxCommitMessage, e);
+            EventManager.Fire(EventCode.REFRESH_CHANGES);
+        }
+
+        /// <summary>
+        /// Creates and executes a push script to upload commits to the repository's server
+        /// </summary>
+        private void ButtonPushCommits_Click(object sender, EventArgs e)
+        {
+            RepoDetails local = ReposConfig.GetInstance().GetSelected();
+            if (local == null)
+            {
+                DialogUtil.Message("Push Error", "Please select a repository to push commits to.");
+                return;
+            }
+
+            ServerDetails remote = ServersConfig.GetInstance().GetServerDetailsByName(local.GetServer());
+            if (remote == null)
+            {
+                DialogUtil.Message("Push Error", "Server \"" + local.GetServer() + "\" is not available");
+                return;
+            }
+            
             ScriptBuilder.PushScript(local, remote);
             Executable exe = new Executable("expect.exe", "push.lua").Start();
             exe.WaitForExit();
@@ -242,7 +266,7 @@ namespace GitUtility.Forms
             {
                 if (!FileUtil.Exists(res + @"\.git"))
                 {
-                    DialogUtil.Message("Invalid repository", "This directory is not initialized as a Git repository.");
+                    DialogUtil.Message("Invalid Repository", "This directory is not initialized as a Git repository.");
                     return;
                 }
                 ReposConfig cnf = ReposConfig.GetInstance();

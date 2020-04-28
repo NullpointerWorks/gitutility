@@ -14,7 +14,7 @@ namespace GitUtility.Util
             if (inst==null) { inst = new SystemWatcher(); }  return inst;
         }
 
-        private NotifyFilters filter;
+        private readonly NotifyFilters filter;
         private FileSystemWatcher watcher;
         private WatcherEvent printchanged;
         //private WatcherEvent printrenamed;

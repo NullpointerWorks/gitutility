@@ -58,7 +58,7 @@ namespace GitUtility.Forms
                     }));
 
                     var rcnf = ReposConfig.GetInstance();
-                    Repository rep = new Repository(rcnf.GetSelected());
+                    var rep = new Repository(rcnf.GetSelected());
                     rep.CheckDifference();
                     
                     // update repository 
@@ -163,10 +163,6 @@ namespace GitUtility.Forms
         }
 
         /// <summary>
-        /// The listbox shows all modified files. Currently, it just shows the content of the repo
-        /// 
-        /// TODO
-        /// 
         /// 
         /// </summary>
         private void ListBoxRepoChanges_SelectedIndexChanged(object sender, EventArgs e)
@@ -175,8 +171,7 @@ namespace GitUtility.Forms
             if (item == null) return;
 
             string selectedFile = item.ToString();
-            ReposConfig lcnf    = ReposConfig.GetInstance();
-            RepoDetails local   = lcnf.GetSelected();
+            RepoDetails local   = ReposConfig.GetInstance().GetSelected();
             string selectedPath = local.GetLocal().Replace(@"\","/") + "/" + selectedFile;
             //DialogUtil.Message(selectedPath);
 

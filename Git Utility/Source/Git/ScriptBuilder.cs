@@ -11,13 +11,13 @@ namespace GitUtility.Git
         /// <summary>
         /// new a script to create a new local repository
         /// </summary>
-        public static string NewScript(string repoName, string localRepo, string remoteRepo)
+        public static string NewScript(RepoDetails repo)
         {
             string[] lines = new string[]
             {
-                "cd /D "+localRepo, // jump to folder
+                "cd /D "+repo.GetLocal(), // jump to folder
                 "git init", // initialize the folder as a git repository
-                "git remote add origin "+remoteRepo, // add a reference to the remote repository
+                "git remote add "+repo.GetName()+" "+repo.GetRemote(), // add a reference to the remote repository
                 "exit"
             };
             FileUtil.WriteToFileUTF8("new.bat", lines);
@@ -27,12 +27,12 @@ namespace GitUtility.Git
         /// <summary>
         /// Restores missing files. Synchronizes with the remote repository.
         /// </summary>
-        public static string FetchScript(RepoDetails repo, ServerDetails sd)
+        public static string FetchScript(RepoDetails rd, ServerDetails sd)
         {
             string[] lines = new string[]
             {
-                "cd /D "+repo.GetLocal(), // jump to folder
-                "git fetch --prune origin",
+                "cd /D "+rd.GetLocal(), // jump to folder
+                "git fetch --prune "+rd.GetName(), // or origin
                 "git reset --hard master",
                 "git clean -f -d", 
                 "exit"
@@ -44,12 +44,12 @@ namespace GitUtility.Git
         /// <summary>
         /// In its default mode, "git pull" is shorthand for "git fetch" followed by "git merge FETCH_HEAD"
         /// </summary>
-        public static string PullScript(string localRepo, ServerDetails sd)
+        public static string PullScript(RepoDetails rd, ServerDetails sd)
         {
             string[] lines = new string[]
             {
-                "cd /D "+localRepo,
-                "git pull origin master",
+                "cd /D "+rd.GetLocal(),
+                "git pull "+rd.GetName()+" master",
                 "exit"
             };
             FileUtil.WriteToFileUTF8("pull.bat", lines);
@@ -82,7 +82,7 @@ namespace GitUtility.Git
             string[] lines = new string[]
             {
                 "cd /D "+rd.GetLocal(), // jump to folder
-                "git push origin master", // upload to repository
+                "git push "+rd.GetName()+" master", // upload to repository
                 "exit"
             };
             FileUtil.WriteToFileUTF8("push.bat", lines);
@@ -99,7 +99,7 @@ namespace GitUtility.Git
                 "cd /D "+rd.GetLocal(), // jump to folder
                 "git add -A", // add all untracked, might make this optional later on
                 "git commit -am \""+message+"\"", // commit all changes with a message
-                "git push origin master", // upload to repository
+                "git push "+rd.GetName()+" master", // upload to repository
                 "exit"
             };
             FileUtil.WriteToFileUTF8("commitpush.bat", lines);

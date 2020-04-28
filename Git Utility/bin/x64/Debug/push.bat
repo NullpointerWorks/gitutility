@@ -1,3 +1,3 @@
-cd /D D:/Development/C#/workspace/axtrongit/myRepoTest
-git push origin master
+cd /D D:/Development/C#/workspace/axtrongit/SomeRepo
+git push SomeRepo master
 exit

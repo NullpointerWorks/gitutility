@@ -1,4 +1,4 @@
-#myRepoTest
+#SomeRepo
 s:Axtron Git
-r:myRepoTest
-l:D:\Development\C#\workspace\axtrongit\myRepoTest
+r:pi@192.168.10.10:/media/usb1/git/SomeRepo
+l:D:/Development/C#/workspace/axtrongit/SomeRepo

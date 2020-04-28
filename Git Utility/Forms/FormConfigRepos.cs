@@ -53,7 +53,7 @@ namespace GitUtility.Forms
         private void SetTextBoxText(string n, string s, string r, string l)
         {
             TextBoxEntryName.Text = n;
-            ComboBoxAvailableServers.Text = s;
+            ComboBoxAvailableServers.SelectedIndex = ComboBoxAvailableServers.FindStringExact(s);
             TextBoxRemoteName.Text = r;
             TextBoxLocalPath.Text = l;
         }

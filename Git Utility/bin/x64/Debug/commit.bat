@@ -1,4 +1,4 @@
-cd /D D:/Development/C#/workspace/axtrongit/myRepoTest
+cd /D D:/Development/C#/workspace/axtrongit/SomeRepo
 git add -A
-git commit -am "moved stuff"
+git commit -am "first commit"
 exit

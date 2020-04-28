@@ -95,7 +95,7 @@ namespace GitUtility.Forms
             localDir = localDir.Replace(@"\","/") +"/"+ repoName;
 
             // get server details
-            var listitem = (ListItem)(ComboBoxSelectServer.SelectedItem);
+            ListItem listitem = (ListItem)(ComboBoxSelectServer.SelectedItem);
             ServerDetails sd = listitem.Details;
 
             // connect to server to setup the remote repo
@@ -134,12 +134,13 @@ namespace GitUtility.Forms
 
             // make and run the script for initializing a new local repo
             string remoteDir = sd.GetServerLoginString() + "/" + repoName;
-            ScriptBuilder.NewScript(repoName, localDir, remoteDir);
+            RepoDetails repo = new RepoDetails(repoName, sd.GetName(), remoteDir, localDir);
+            ScriptBuilder.NewScript(repo);
             Executable exe = new Executable("expect.exe", "new.lua").Start();
             exe.WaitForExit();
 
             // add new repo to configuration
-            ReposConfig.GetInstance().AddRepoDetails(repoName, sd.GetName(), repoName, localDir, false);
+            ReposConfig.GetInstance().AddRepoDetails(repo, false);
             ReposConfig.GetInstance().Save();
 
             // done. now close and fire refresh event

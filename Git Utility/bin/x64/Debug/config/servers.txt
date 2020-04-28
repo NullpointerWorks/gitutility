@@ -8,8 +8,3 @@ s:192.168.10.10
 l:/media/usb2/git
 u:pi
 p:admin
-#Home Git
-s:192.168.1.60
-l:/media/usb1/git
-u:pi
-p:admin

@@ -48,22 +48,22 @@
             this.ButtonFetch = new System.Windows.Forms.Button();
             this.ButtonCommitChanges = new System.Windows.Forms.Button();
             this.TextBoxCommitMessage = new System.Windows.Forms.TextBox();
-            this.TextBoxChangeDetails = new System.Windows.Forms.TextBox();
             this.ButtonPushCommits = new System.Windows.Forms.Button();
             this.MenuStrip = new System.Windows.Forms.MenuStrip();
             this.programToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newRepositoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cloneRepositoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addRepositoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cloneRepositoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.repositoriesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.serverToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.terminalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.versionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.RichTextBoxDeltaDetails = new System.Windows.Forms.RichTextBox();
             this.MenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -230,16 +230,6 @@
             this.TextBoxCommitMessage.MouseClick += new System.Windows.Forms.MouseEventHandler(this.TextBoxCommitMessage_Clicked);
             this.TextBoxCommitMessage.Validated += new System.EventHandler(this.TextBoxCommitMessage_Validate);
             // 
-            // TextBoxChangeDetails
-            // 
-            this.TextBoxChangeDetails.Font = new System.Drawing.Font("Consolas", 8F);
-            this.TextBoxChangeDetails.Location = new System.Drawing.Point(215, 54);
-            this.TextBoxChangeDetails.Multiline = true;
-            this.TextBoxChangeDetails.Name = "TextBoxChangeDetails";
-            this.TextBoxChangeDetails.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.TextBoxChangeDetails.Size = new System.Drawing.Size(399, 456);
-            this.TextBoxChangeDetails.TabIndex = 25;
-            // 
             // ButtonPushCommits
             // 
             this.ButtonPushCommits.Location = new System.Drawing.Point(12, 489);
@@ -274,38 +264,38 @@
             this.programToolStripMenuItem1.Size = new System.Drawing.Size(65, 20);
             this.programToolStripMenuItem1.Text = "Program";
             // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.MenuItemExit_Click);
-            // 
             // newRepositoryToolStripMenuItem
             // 
             this.newRepositoryToolStripMenuItem.Name = "newRepositoryToolStripMenuItem";
-            this.newRepositoryToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.newRepositoryToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.newRepositoryToolStripMenuItem.Text = "New Repository";
             this.newRepositoryToolStripMenuItem.Click += new System.EventHandler(this.MenuItemNewRepo_Click);
-            // 
-            // cloneRepositoryToolStripMenuItem
-            // 
-            this.cloneRepositoryToolStripMenuItem.Name = "cloneRepositoryToolStripMenuItem";
-            this.cloneRepositoryToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.cloneRepositoryToolStripMenuItem.Text = "Clone Repository";
-            this.cloneRepositoryToolStripMenuItem.Click += new System.EventHandler(this.MenuItemCloneRepo_Click);
             // 
             // addRepositoryToolStripMenuItem
             // 
             this.addRepositoryToolStripMenuItem.Name = "addRepositoryToolStripMenuItem";
-            this.addRepositoryToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addRepositoryToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.addRepositoryToolStripMenuItem.Text = "Add Repository";
             this.addRepositoryToolStripMenuItem.Click += new System.EventHandler(this.MenuItemAddLocalRepo_Click);
+            // 
+            // cloneRepositoryToolStripMenuItem
+            // 
+            this.cloneRepositoryToolStripMenuItem.Name = "cloneRepositoryToolStripMenuItem";
+            this.cloneRepositoryToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.cloneRepositoryToolStripMenuItem.Text = "Clone Repository";
+            this.cloneRepositoryToolStripMenuItem.Click += new System.EventHandler(this.MenuItemCloneRepo_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(161, 6);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.MenuItemExit_Click);
             // 
             // configurationToolStripMenuItem
             // 
@@ -321,21 +311,26 @@
             // repositoriesToolStripMenuItem
             // 
             this.repositoriesToolStripMenuItem.Name = "repositoriesToolStripMenuItem";
-            this.repositoriesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.repositoriesToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.repositoriesToolStripMenuItem.Text = "Repositories";
             this.repositoriesToolStripMenuItem.Click += new System.EventHandler(this.MenuItemReposConfig_Click);
             // 
             // serverToolStripMenuItem
             // 
             this.serverToolStripMenuItem.Name = "serverToolStripMenuItem";
-            this.serverToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.serverToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.serverToolStripMenuItem.Text = "Server";
             this.serverToolStripMenuItem.Click += new System.EventHandler(this.MenuItemConfigureServers_Click);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(135, 6);
             // 
             // terminalToolStripMenuItem
             // 
             this.terminalToolStripMenuItem.Name = "terminalToolStripMenuItem";
-            this.terminalToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.terminalToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.terminalToolStripMenuItem.Text = "Terminal";
             this.terminalToolStripMenuItem.Click += new System.EventHandler(this.MenuItemOpenTerminal_Click);
             // 
@@ -350,22 +345,26 @@
             // versionToolStripMenuItem
             // 
             this.versionToolStripMenuItem.Name = "versionToolStripMenuItem";
-            this.versionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.versionToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
             this.versionToolStripMenuItem.Text = "Version";
             this.versionToolStripMenuItem.Click += new System.EventHandler(this.MenuItemShowVersion_Click);
             // 
-            // toolStripSeparator5
+            // RichTextBoxDeltaDetails
             // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(177, 6);
+            this.RichTextBoxDeltaDetails.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.RichTextBoxDeltaDetails.Location = new System.Drawing.Point(215, 54);
+            this.RichTextBoxDeltaDetails.Name = "RichTextBoxDeltaDetails";
+            this.RichTextBoxDeltaDetails.Size = new System.Drawing.Size(399, 455);
+            this.RichTextBoxDeltaDetails.TabIndex = 28;
+            this.RichTextBoxDeltaDetails.Text = "";
             // 
             // FormGitUtility
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(626, 521);
+            this.Controls.Add(this.RichTextBoxDeltaDetails);
             this.Controls.Add(this.ButtonPushCommits);
-            this.Controls.Add(this.TextBoxChangeDetails);
             this.Controls.Add(this.TextBoxCommitMessage);
             this.Controls.Add(this.ButtonCommitChanges);
             this.Controls.Add(this.ButtonFetch);
@@ -401,7 +400,6 @@
         private System.Windows.Forms.Button ButtonFetch;
         private System.Windows.Forms.Button ButtonCommitChanges;
         private System.Windows.Forms.TextBox TextBoxCommitMessage;
-        private System.Windows.Forms.TextBox TextBoxChangeDetails;
         private System.Windows.Forms.ToolStripMenuItem MenuItemReposConfig;
         private System.Windows.Forms.Button ButtonPushCommits;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
@@ -421,5 +419,6 @@
         private System.Windows.Forms.ToolStripMenuItem infoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem versionToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.RichTextBox RichTextBoxDeltaDetails;
     }
 }

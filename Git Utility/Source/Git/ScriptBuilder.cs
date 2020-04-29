@@ -120,6 +120,21 @@ namespace GitUtility.Git
             FileUtil.WriteToFileUTF8("clone.bat", lines);
             return DefaultLogin("clone", sd);
         }
+        
+        /// <summary>
+        /// scans a file in the repo for differences compared to last commit
+        /// </summary>
+        public static string DifferenceFileScript(RepoDetails rd, string file)
+        {
+            string[] lines = new string[]
+            {
+                "cd /D "+rd.GetLocal(), // jump to local workspace
+                "git diff -- "+file, // scan file differences
+                "exit"
+            };
+            FileUtil.WriteToFileUTF8("diff-file.bat", lines);
+            return DefaultExecution("diff-file");
+        }
 
         // ==============================================================
         

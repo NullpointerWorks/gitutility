@@ -6,6 +6,7 @@ using GitUtility.Remote;
 using GitUtility.Util;
 
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Threading;
@@ -52,20 +53,23 @@ namespace GitUtility.Forms
 
                 case EventCode.REFRESH_CHANGES:
                     // clear the change details. they're possibly invalid
-                    TextBoxChangeDetails.Invoke(new MethodInvoker(delegate
+                    RichTextBoxDeltaDetails.Invoke(new MethodInvoker(delegate
                     {
-                        TextBoxChangeDetails.Text = "";
+                        RichTextBoxDeltaDetails.Text = "";
                     }));
+                    
+                    var repdetails = ReposConfig.GetInstance().GetSelected();
 
-                    var rcnf = ReposConfig.GetInstance();
-                    var rep = new Repository(rcnf.GetSelected());
-                    rep.CheckDifference();
+                    // get the repository from the manager
+                    // if the repo doesnt 
+                    Repository rep = new Repository(repdetails);
+                    List<string> deltas = rep.RepoDelta();
                     
                     // update repository 
                     ListBoxRepoChanges.Invoke(new MethodInvoker(delegate
                     {
                         ListBoxRepoChanges.Items.Clear();
-                        Iterator<string> it = rep.GetIterator();
+                        Iterator<string> it = new Iterator<string>(deltas);
                         while (it.HasNext())
                         {
                             ListBoxRepoChanges.Items.Add( it.GetNext() );
@@ -96,8 +100,8 @@ namespace GitUtility.Forms
          */
         private void FormGitUtility_Load(object sender, EventArgs e)
         {
-            TextBoxChangeDetails.ReadOnly = true;
-            TextBoxChangeDetails.BackColor = SystemColors.Window;
+            RichTextBoxDeltaDetails.ReadOnly = true;
+            RichTextBoxDeltaDetails.BackColor = SystemColors.Window;
             EventManager.Fire(EventCode.REFRESH_SERVERS);
             EventManager.Fire(EventCode.REFRESH_REPOS);
         }
@@ -170,19 +174,27 @@ namespace GitUtility.Forms
             var item = ListBoxRepoChanges.SelectedItem;
             if (item == null) return;
 
+            RepoDetails rd   = ReposConfig.GetInstance().GetSelected();
             string selectedFile = item.ToString();
-            RepoDetails local   = ReposConfig.GetInstance().GetSelected();
-            string selectedPath = local.GetLocal().Replace(@"\","/") + "/" + selectedFile;
-            //DialogUtil.Message(selectedPath);
+            string selectedPath = rd.GetLocal().Replace(@"\","/") + "/" + selectedFile;
 
+            // get changes in the selected file
+            Repository rep = new Repository(rd);
+            List<string> lines = rep.FileDelta(selectedFile);
 
-            
-            // TODO get changes in the selected file
+            // reset the textbox
+            // color the removed lines red and the new lines green
+            RichTextBoxDeltaDetails.Text = "";
+            foreach (string line in lines)
+            {
+                if (line.StartsWith("+"))
+                    RichTextBoxDeltaDetails.SelectionColor = Color.Green;
 
-            // TODO print changes in 'TextBoxChangeDetails.Text'
-
-            
-
+                if (line.StartsWith("-"))
+                    RichTextBoxDeltaDetails.SelectionColor = Color.Red;
+                
+                RichTextBoxDeltaDetails.SelectedText = line + Environment.NewLine;
+            }
         }
 
         /// <summary>
@@ -193,7 +205,7 @@ namespace GitUtility.Forms
             string commitmsg = TextBoxCommitMessage.Text;
             if (commitmsg.Equals("") || commitmsg.Equals(ApplicationConstant.COMMIT_GREYTEXT))
             {
-                DialogUtil.Message("Commit Error","Please add a commit message before committing.");
+                DialogUtil.Message("Commit Error", "Please add a commit message before committing.");
                 return;
             }
 
@@ -297,7 +309,7 @@ namespace GitUtility.Forms
         {
             DialogUtil.Message( "Version", 
                                 "Git Utility\n" +
-                                "Axtron Development Tool\n" +
+                                "Axtron Repository Tool\n" +
                                 "Nullpointer Works © 2020\n\n" +
                                 "Version: " + ApplicationConstant.APP_VERSION);
         }

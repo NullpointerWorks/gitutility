@@ -1,6 +1,7 @@
 ﻿using GitUtility.Command;
 using GitUtility.Config;
 using GitUtility.Util;
+using System;
 using System.Collections.Generic;
 using System.IO;
 
@@ -9,45 +10,74 @@ namespace GitUtility.Git
     public class Repository
     {
         private bool scanNames;
-        private RepoDetails linker;
-
+        private RepoDetails details;
         private List<string> buffer;
-        private List<string> local;
-        private List<string> delta;
 
         public Repository(RepoDetails rd)
         {
-            linker = rd;
+            details = rd;
             buffer = new List<string>();
-            local = new List<string>();
-            delta = new List<string>();
         }
         
         ~Repository()
         {
-            linker = null;
+            details = null;
         }
 
-        public Iterator<string> GetIterator()
+        public string GetName()
         {
-            return new Iterator<string>(delta);
+            return details.GetName();
         }
 
-        public void CheckDifference()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public List<string> FileDelta(string file)
         {
-            if (linker == null) return;
+            if (details == null) return null;
+            List<string> delta = new List<string>();
             scanNames = false;
-            buffer.Clear();
-            local.Clear();
-            delta.Clear();
+            string dir = details.GetLocal();
 
-            string dir = linker.GetLocal();
-            string name = linker.GetName();
-
-            // lists remote repo files
+            // get file difference compared to previous commit
+            StartTrigger = "@@ ";// "diff --git";
+            EndTrigger = "pause";
             Commander cmdr = new Commander(ApplicationConstant.PATH_CMD);
             cmdr.Start();
-            cmdr.SetPrintDelegate(PrintRemote);
+            cmdr.SetPrintDelegate(Print);
+            cmdr.WaitForExit = true;
+            cmdr.Execute(@"cd /D " + dir);
+            cmdr.Execute(@"git diff -- " + file);
+            cmdr.Execute(@"exit");
+            cmdr.Close();
+            foreach (string line in buffer) delta.Add(line);
+            buffer.Clear();
+            return delta;
+        }
+
+        /// <summary>
+        /// collects the repository differences compared to previous commit
+        /// </summary>
+        /// <returns>
+        /// returns a list of file names with their status
+        /// </returns>
+        public List<string> RepoDelta()
+        {
+            if (details == null) return null;
+            List<string> delta = new List<string>();
+            List<string> local = new List<string>();
+            scanNames = false;
+            
+            string dir = details.GetLocal();
+            string name = details.GetName();
+
+            // lists remote repo files
+            StartTrigger = "git ls-files";
+            EndTrigger = "exit";
+            Commander cmdr = new Commander(ApplicationConstant.PATH_CMD);
+            cmdr.Start();
+            cmdr.SetPrintDelegate(Print);
             cmdr.WaitForExit = true;
             cmdr.Execute(@"cd /D " + dir);
             cmdr.Execute(@"git ls-files");
@@ -55,7 +85,7 @@ namespace GitUtility.Git
             cmdr.Close();
 
             // look for the files actually in the repo
-            string localPath = linker.GetLocal().Replace("/", @"\"); // make sure we match the right characters
+            string localPath = details.GetLocal().Replace("/", @"\"); // make sure we match the right characters
             int leng = (localPath+"\\").Length;
             string[] allfiles = Directory.GetFiles(localPath, "*.*", SearchOption.AllDirectories);
             
@@ -75,18 +105,19 @@ namespace GitUtility.Git
             }
             buffer.Clear();
 
-            // find deleted and modified files
+            // find changed files
+            StartTrigger = "git diff --name-only";
+            EndTrigger = "exit";
             cmdr.Start();
-            cmdr.SetPrintDelegate(PrintModified);
+            cmdr.SetPrintDelegate(Print);
             cmdr.WaitForExit = true;
             cmdr.Execute(@"cd /D " + dir);
             cmdr.Execute(@"git diff --name-only");
             cmdr.Execute(@"exit");
             cmdr.Close();
 
-            // compare the modified files to the local repository. 
-            // any files that are still present are modified.
-            // other files that do not match the local repo are deleted.
+            // changed files that still exist, are modified
+            // changed files that are no longer present are deleted
             foreach (string file in buffer)
             {
                 if (local.Contains(file))
@@ -96,28 +127,23 @@ namespace GitUtility.Git
                 else
                 {
                     delta.Add(file+" - deleted");
-                } 
+                }
             }
+            buffer.Clear();
+
+            return delta;
         }
 
-        private void PrintRemote(string txt)
+        private string StartTrigger = "git ls-files";
+        private string EndTrigger = "exit";
+        private void Print(string txt)
         {
             if (txt == null) return;
             if (txt.Equals("")) return;
-            if (txt.EndsWith("exit")) scanNames = false;
+            if (txt.EndsWith(EndTrigger)) scanNames = false;
             txt = txt.Replace("/", @"\"); // make sure slashes are the same direction
             if (scanNames) buffer.Add(txt);
-            if (txt.EndsWith("git ls-files")) scanNames = true;
-        }
-
-        private void PrintModified(string txt)
-        {
-            if (txt == null) return;
-            if (txt.Equals("")) return;
-            if (txt.EndsWith("exit")) scanNames = false;
-            txt = txt.Replace("/", @"\"); // make sure slashes are the same direction
-            if (scanNames) buffer.Add(txt);
-            if (txt.EndsWith("git diff --name-only")) scanNames = true;
+            if (txt.Contains(StartTrigger)) scanNames = true;
         }
     }
 }

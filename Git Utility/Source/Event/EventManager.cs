@@ -9,9 +9,13 @@ namespace GitUtility.Event
     public class EventManager
     {
         private static EventManager inst = null;
-        public static EventManager GetInstance()
+        public static void Initialize()
         {
             if (inst == null) inst = new EventManager();
+        }
+        public static EventManager GetInstance()
+        {
+            Initialize();
             return inst;
         }
 

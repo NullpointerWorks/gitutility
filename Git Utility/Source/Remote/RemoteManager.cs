@@ -19,8 +19,22 @@ namespace GitUtility.Remote
 
         public IRemote Connect(ServerDetails sd)
         {
+            return Connect(sd, RemoteType.SSH);
+        }
+
+        public IRemote Connect(ServerDetails sd, RemoteType rt)
+        {
             if (sd == null) return null;
-            IRemote rem = new SSHRemote();
+            IRemote rem = null;
+            switch (rt)
+            {
+                case RemoteType.SSH:
+                    rem = new SSHRemote();
+                    break;
+                default:
+                    break;
+            }
+            if (rem == null) return null;
             rem.Connect(sd);
             remotes.Add(rem);
             return rem;

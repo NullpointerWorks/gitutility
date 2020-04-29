@@ -131,6 +131,7 @@
     <Compile Include="Source\Event\IEventListener.cs" />
     <Compile Include="Source\Remote\IRemote.cs" />
     <Compile Include="Source\Remote\IStream.cs" />
+    <Compile Include="Source\Remote\RemoteType.cs" />
     <Compile Include="Source\Remote\SSHRemote.cs" />
     <Compile Include="Source\Remote\RemoteManager.cs" />
     <Compile Include="Source\Remote\SSHStream.cs" />

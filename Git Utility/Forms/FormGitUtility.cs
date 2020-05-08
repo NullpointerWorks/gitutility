@@ -108,7 +108,7 @@ namespace GitUtility.Forms
 
         private void TextBoxCommitMessage_Validate(object sender, EventArgs e)
         {
-            if (((TextBox)sender).Text == "")
+            if (((TextBox)sender).Text.Equals(""))
             {
                 TextBoxCommitMessage.Text = ApplicationConstant.COMMIT_GREYTEXT;
                 TextBoxCommitMessage.ForeColor = Color.Gray;
@@ -117,7 +117,7 @@ namespace GitUtility.Forms
         
         private void TextBoxCommitMessage_Clicked(object sender, MouseEventArgs e)
         {
-            if (((TextBox)sender).Text == ApplicationConstant.COMMIT_GREYTEXT)
+            if (((TextBox)sender).Text.Equals(ApplicationConstant.COMMIT_GREYTEXT))
             {
                 TextBoxCommitMessage.Text = "";
                 TextBoxCommitMessage.ForeColor = Color.Black;
@@ -308,8 +308,8 @@ namespace GitUtility.Forms
         private void MenuItemShowVersion_Click(object sender, EventArgs e)
         {
             DialogUtil.Message( "Version", 
-                                "Git Utility\n" +
-                                "Axtron Repository Tool\n" +
+                                "Git Utility\n"+
+                                "SSH Repository Tool\n" +
                                 "Nullpointer Works © 2020\n\n" +
                                 "Version: " + ApplicationConstant.APP_VERSION);
         }

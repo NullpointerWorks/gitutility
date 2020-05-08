@@ -56,9 +56,9 @@
             // 
             // ButtonRemRepo
             // 
-            this.ButtonRemRepo.Location = new System.Drawing.Point(171, 313);
+            this.ButtonRemRepo.Location = new System.Drawing.Point(329, 237);
             this.ButtonRemRepo.Name = "ButtonRemRepo";
-            this.ButtonRemRepo.Size = new System.Drawing.Size(73, 27);
+            this.ButtonRemRepo.Size = new System.Drawing.Size(106, 27);
             this.ButtonRemRepo.TabIndex = 12;
             this.ButtonRemRepo.Text = "Remove";
             this.ButtonRemRepo.UseVisualStyleBackColor = true;
@@ -66,9 +66,9 @@
             // 
             // ButtonSaveRepos
             // 
-            this.ButtonSaveRepos.Location = new System.Drawing.Point(250, 313);
+            this.ButtonSaveRepos.Location = new System.Drawing.Point(329, 280);
             this.ButtonSaveRepos.Name = "ButtonSaveRepos";
-            this.ButtonSaveRepos.Size = new System.Drawing.Size(73, 27);
+            this.ButtonSaveRepos.Size = new System.Drawing.Size(106, 27);
             this.ButtonSaveRepos.TabIndex = 14;
             this.ButtonSaveRepos.Text = "Save";
             this.ButtonSaveRepos.UseVisualStyleBackColor = true;
@@ -86,7 +86,7 @@
             this.GroupBoxRepoDetail.Controls.Add(this.LabelServerName);
             this.GroupBoxRepoDetail.Location = new System.Drawing.Point(12, 12);
             this.GroupBoxRepoDetail.Name = "GroupBoxRepoDetail";
-            this.GroupBoxRepoDetail.Size = new System.Drawing.Size(311, 129);
+            this.GroupBoxRepoDetail.Size = new System.Drawing.Size(429, 129);
             this.GroupBoxRepoDetail.TabIndex = 15;
             this.GroupBoxRepoDetail.TabStop = false;
             this.GroupBoxRepoDetail.Text = "Repository Details";
@@ -113,7 +113,7 @@
             // 
             this.TextBoxRemoteName.Location = new System.Drawing.Point(95, 72);
             this.TextBoxRemoteName.Name = "TextBoxRemoteName";
-            this.TextBoxRemoteName.Size = new System.Drawing.Size(210, 20);
+            this.TextBoxRemoteName.Size = new System.Drawing.Size(328, 20);
             this.TextBoxRemoteName.TabIndex = 6;
             // 
             // LabelRemote
@@ -129,7 +129,7 @@
             // 
             this.TextBoxLocalPath.Location = new System.Drawing.Point(95, 98);
             this.TextBoxLocalPath.Name = "TextBoxLocalPath";
-            this.TextBoxLocalPath.Size = new System.Drawing.Size(210, 20);
+            this.TextBoxLocalPath.Size = new System.Drawing.Size(328, 20);
             this.TextBoxLocalPath.TabIndex = 7;
             // 
             // LabelServer
@@ -159,9 +159,9 @@
             // 
             // ButtonAddRepository
             // 
-            this.ButtonAddRepository.Location = new System.Drawing.Point(91, 313);
+            this.ButtonAddRepository.Location = new System.Drawing.Point(329, 191);
             this.ButtonAddRepository.Name = "ButtonAddRepository";
-            this.ButtonAddRepository.Size = new System.Drawing.Size(73, 27);
+            this.ButtonAddRepository.Size = new System.Drawing.Size(106, 27);
             this.ButtonAddRepository.TabIndex = 16;
             this.ButtonAddRepository.Text = "Add";
             this.ButtonAddRepository.UseVisualStyleBackColor = true;
@@ -169,9 +169,9 @@
             // 
             // ButtonNewRepo
             // 
-            this.ButtonNewRepo.Location = new System.Drawing.Point(12, 313);
+            this.ButtonNewRepo.Location = new System.Drawing.Point(329, 147);
             this.ButtonNewRepo.Name = "ButtonNewRepo";
-            this.ButtonNewRepo.Size = new System.Drawing.Size(73, 27);
+            this.ButtonNewRepo.Size = new System.Drawing.Size(106, 27);
             this.ButtonNewRepo.TabIndex = 17;
             this.ButtonNewRepo.Text = "New";
             this.ButtonNewRepo.UseVisualStyleBackColor = true;
@@ -181,7 +181,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(335, 352);
+            this.ClientSize = new System.Drawing.Size(453, 319);
             this.Controls.Add(this.ButtonNewRepo);
             this.Controls.Add(this.ButtonAddRepository);
             this.Controls.Add(this.GroupBoxRepoDetail);

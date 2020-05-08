@@ -204,7 +204,7 @@
             this.ButtonFetch.Name = "ButtonFetch";
             this.ButtonFetch.Size = new System.Drawing.Size(197, 21);
             this.ButtonFetch.TabIndex = 22;
-            this.ButtonFetch.Text = "Fetch Origin";
+            this.ButtonFetch.Text = "Fetch";
             this.ButtonFetch.UseVisualStyleBackColor = true;
             this.ButtonFetch.Click += new System.EventHandler(this.ButtonFetch_Click);
             // 

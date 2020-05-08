@@ -47,3 +47,4 @@ D:\Development\C#\workspace\git\gitutility\Git Utility\obj\x64\Debug\Git Utility
 D:\Development\C#\workspace\git\gitutility\Git Utility\obj\x64\Debug\Git Utility.csproj.CopyComplete
 D:\Development\C#\workspace\git\gitutility\Git Utility\obj\x64\Debug\GitUtility.exe
 D:\Development\C#\workspace\git\gitutility\Git Utility\obj\x64\Debug\GitUtility.pdb
+D:\Development\C#\workspace\git\gitutility\Git Utility\obj\x64\Debug\Git Utility.csprojAssemblyReference.cache

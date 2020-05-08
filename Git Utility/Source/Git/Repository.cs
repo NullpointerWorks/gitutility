@@ -1,7 +1,5 @@
 ﻿using GitUtility.Command;
 using GitUtility.Config;
-using GitUtility.Util;
-using System;
 using System.Collections.Generic;
 using System.IO;
 

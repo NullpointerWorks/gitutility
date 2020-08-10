@@ -9,7 +9,7 @@ namespace GitUtility.Remote
     public class SSHStream : IStream
     {
         private readonly ShellStream stream;
-
+        
         public SSHStream(ShellStream sshs)
         {
             stream = sshs;

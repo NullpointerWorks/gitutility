@@ -20,9 +20,10 @@ namespace GitUtility.Util
         /// <summary>
         /// opens a browse pop-up to search the local system for a folder
         /// </summary>
-        public static string BrowseFolder()
+        public static string BrowseFolder(string desc = "Select the document folder")
         {
             FolderBrowserDialog ofd = new FolderBrowserDialog();
+            ofd.Description = desc;
             DialogResult result = ofd.ShowDialog();
             if (result == DialogResult.OK)
             {

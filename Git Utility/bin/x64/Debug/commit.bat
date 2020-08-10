@@ -1,4 +1,4 @@
-cd /D D:/Development/C#/workspace/axtrongit/SomeRepo
+cd /D F:/Development/C#/workspace/axtrongit/TestRepo
 git add -A
-git commit -am "modified code"
+git commit -am "initial upload"
 exit

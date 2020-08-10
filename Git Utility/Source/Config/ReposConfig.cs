@@ -179,6 +179,7 @@ namespace GitUtility.Config
             RepoDetails detail = null;
             foreach (string line in lines)
             {
+                if (line.Length<1) continue;
                 if (line.Substring(0,1).Equals("#"))
                 {
                     AddRepoDetails(detail, true);

@@ -63,9 +63,9 @@
             // 
             // ButtonAccept
             // 
-            this.ButtonAccept.Location = new System.Drawing.Point(145, 135);
+            this.ButtonAccept.Location = new System.Drawing.Point(128, 135);
             this.ButtonAccept.Name = "ButtonAccept";
-            this.ButtonAccept.Size = new System.Drawing.Size(111, 32);
+            this.ButtonAccept.Size = new System.Drawing.Size(128, 32);
             this.ButtonAccept.TabIndex = 5;
             this.ButtonAccept.Text = "Create Repository";
             this.ButtonAccept.UseVisualStyleBackColor = true;
@@ -127,7 +127,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(356, 174);
+            this.ClientSize = new System.Drawing.Size(357, 174);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.ComboBoxSelectServer);
             this.Controls.Add(this.ButtonBrowse);
@@ -140,7 +140,6 @@
             this.Name = "FormNewRepo";
             this.Text = "New Repository";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormNewRepo_Closing);
-            this.Load += new System.EventHandler(this.FormNewRepo_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

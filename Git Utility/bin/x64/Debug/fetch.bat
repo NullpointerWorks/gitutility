@@ -1,5 +1,5 @@
-cd /D D:/Development/C#/workspace/axtrongit/SomeRepo
-git fetch --prune SomeRepo
+cd /D F:/Development/C#/workspace/axtrongit/TestRepo
+git fetch --prune TestRepo
 git reset --hard master
 git clean -f -d
 exit

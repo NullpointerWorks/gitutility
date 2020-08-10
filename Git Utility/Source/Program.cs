@@ -23,6 +23,7 @@ namespace GitUtility
         /// attribute is not present, the application uses the 
         /// multithreaded apartment model, which is not supported for 
         /// Windows Forms.
+
         [STAThread]
         static void Main()
         {

@@ -53,6 +53,7 @@
             this.programToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.newRepositoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addRepositoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.downloadRepositoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cloneRepositoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -133,26 +134,26 @@
             // MenuItemConfigureServers
             // 
             this.MenuItemConfigureServers.Name = "MenuItemConfigureServers";
-            this.MenuItemConfigureServers.Size = new System.Drawing.Size(166, 22);
+            this.MenuItemConfigureServers.Size = new System.Drawing.Size(164, 22);
             this.MenuItemConfigureServers.Text = "Servers";
             this.MenuItemConfigureServers.Click += new System.EventHandler(this.MenuItemConfigureServers_Click);
             // 
             // MenuItemReposConfig
             // 
             this.MenuItemReposConfig.Name = "MenuItemReposConfig";
-            this.MenuItemReposConfig.Size = new System.Drawing.Size(166, 22);
+            this.MenuItemReposConfig.Size = new System.Drawing.Size(164, 22);
             this.MenuItemReposConfig.Text = "Repositories";
             this.MenuItemReposConfig.Click += new System.EventHandler(this.MenuItemReposConfig_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(163, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(161, 6);
             // 
             // MenuItem_OpenTerminal
             // 
             this.MenuItem_OpenTerminal.Name = "MenuItem_OpenTerminal";
-            this.MenuItem_OpenTerminal.Size = new System.Drawing.Size(166, 22);
+            this.MenuItem_OpenTerminal.Size = new System.Drawing.Size(164, 22);
             this.MenuItem_OpenTerminal.Text = "Terminal (buggy)";
             this.MenuItem_OpenTerminal.Click += new System.EventHandler(this.MenuItemOpenTerminal_Click);
             // 
@@ -167,7 +168,7 @@
             // MenuItemShowVersion
             // 
             this.MenuItemShowVersion.Name = "MenuItemShowVersion";
-            this.MenuItemShowVersion.Size = new System.Drawing.Size(113, 22);
+            this.MenuItemShowVersion.Size = new System.Drawing.Size(112, 22);
             this.MenuItemShowVersion.Text = "Version";
             this.MenuItemShowVersion.Click += new System.EventHandler(this.MenuItemShowVersion_Click);
             // 
@@ -257,6 +258,7 @@
             this.programToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newRepositoryToolStripMenuItem,
             this.addRepositoryToolStripMenuItem,
+            this.downloadRepositoryToolStripMenuItem,
             this.cloneRepositoryToolStripMenuItem,
             this.toolStripSeparator4,
             this.exitToolStripMenuItem});
@@ -267,33 +269,40 @@
             // newRepositoryToolStripMenuItem
             // 
             this.newRepositoryToolStripMenuItem.Name = "newRepositoryToolStripMenuItem";
-            this.newRepositoryToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.newRepositoryToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
             this.newRepositoryToolStripMenuItem.Text = "New Repository";
             this.newRepositoryToolStripMenuItem.Click += new System.EventHandler(this.MenuItemNewRepo_Click);
             // 
             // addRepositoryToolStripMenuItem
             // 
             this.addRepositoryToolStripMenuItem.Name = "addRepositoryToolStripMenuItem";
-            this.addRepositoryToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
-            this.addRepositoryToolStripMenuItem.Text = "Add Repository";
+            this.addRepositoryToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.addRepositoryToolStripMenuItem.Text = "Add Local Repository";
             this.addRepositoryToolStripMenuItem.Click += new System.EventHandler(this.MenuItemAddLocalRepo_Click);
+            // 
+            // downloadRepositoryToolStripMenuItem
+            // 
+            this.downloadRepositoryToolStripMenuItem.Name = "downloadRepositoryToolStripMenuItem";
+            this.downloadRepositoryToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.downloadRepositoryToolStripMenuItem.Text = "Get Remote Repository";
+            this.downloadRepositoryToolStripMenuItem.Click += new System.EventHandler(this.MenuItemGetRemoteRepo_Click);
             // 
             // cloneRepositoryToolStripMenuItem
             // 
             this.cloneRepositoryToolStripMenuItem.Name = "cloneRepositoryToolStripMenuItem";
-            this.cloneRepositoryToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.cloneRepositoryToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
             this.cloneRepositoryToolStripMenuItem.Text = "Clone Repository";
             this.cloneRepositoryToolStripMenuItem.Click += new System.EventHandler(this.MenuItemCloneRepo_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(161, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(192, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.MenuItemExit_Click);
             // 
@@ -345,7 +354,7 @@
             // versionToolStripMenuItem
             // 
             this.versionToolStripMenuItem.Name = "versionToolStripMenuItem";
-            this.versionToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
+            this.versionToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.versionToolStripMenuItem.Text = "Version";
             this.versionToolStripMenuItem.Click += new System.EventHandler(this.MenuItemShowVersion_Click);
             // 
@@ -420,5 +429,6 @@
         private System.Windows.Forms.ToolStripMenuItem versionToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.RichTextBox RichTextBoxDeltaDetails;
+        private System.Windows.Forms.ToolStripMenuItem downloadRepositoryToolStripMenuItem;
     }
 }

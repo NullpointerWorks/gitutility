@@ -6,15 +6,15 @@ using GitUtility.Remote;
 using GitUtility.Util;
 
 using System;
-using System.Drawing;
 using System.IO;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace GitUtility.Forms
 {
-    public partial class FormNewRepo : Form, IEventListener
+    public partial class FormGetRemoteRepo : Form, IEventListener
     {
-        public FormNewRepo()
+        public FormGetRemoteRepo()
         {
             InitializeComponent();
             FileUtil.SetGitIcon(this);
@@ -25,14 +25,14 @@ namespace GitUtility.Forms
             ButtonCancel.DialogResult = DialogResult.Cancel;
             EventManager.Fire(EventCode.REFRESH_SERVERS);
         }
-        
+
         private void RefreshServerComboBox()
         {
             var ds = ServersConfig.GetInstance().GetServerDetailsList();
-            ComboBoxSelectServer.DataSource     = ds;
-            ComboBoxSelectServer.DisplayMember  = "Name";
-            ComboBoxSelectServer.ValueMember    = "Details";
-            ComboBoxSelectServer.DropDownStyle  = ComboBoxStyle.DropDownList;
+            ComboBoxSelectServer.DataSource = ds;
+            ComboBoxSelectServer.DisplayMember = "Name";
+            ComboBoxSelectServer.ValueMember = "Details";
+            ComboBoxSelectServer.DropDownStyle = ComboBoxStyle.DropDownList;
             ComboBoxSelectServer.Refresh();
         }
 
@@ -54,12 +54,12 @@ namespace GitUtility.Forms
                 case EventCode.REFRESH_SERVERS:
                     if (ComboBoxSelectServer.InvokeRequired)
                     {
-                        var inv = new MethodInvoker( delegate {RefreshServerComboBox();} );
+                        var inv = new MethodInvoker(delegate { RefreshServerComboBox(); });
                         ComboBoxSelectServer.Invoke(inv);
                     }
                     //else { RefreshServerComboBox(); }
                     break;
-                    
+
                 default: break;
             }
         }
@@ -68,11 +68,6 @@ namespace GitUtility.Forms
         //              UI Events
         // =================================================================
 
-        /// <summary>
-        /// When creating a new repository two things need to happen. The 
-        /// server needs to setup a bare repo and the local directory needs 
-        /// to be linked to the remote repo.
-        /// </summary>
         private void ButtonAccept_Click(object sender, EventArgs e)
         {
             // error checks
@@ -84,17 +79,18 @@ namespace GitUtility.Forms
             string localDir = TextBoxLocalDirectory.Text;
             if (localDir == null) return;
             if (localDir.Equals("")) return;
+            localDir = localDir.Replace(@"\", "/");
 
             string server = ComboBoxSelectServer.GetItemText(ComboBoxSelectServer.SelectedItem);
             if (server == null) return;
             if (server.Equals("")) return;
-            localDir = localDir.Replace(@"\","/") +"/"+ repoName;
+            
 
             // get server details
             ListItem listitem = (ListItem)(ComboBoxSelectServer.SelectedItem);
             ServerDetails sd = listitem.Details;
 
-            // connect to server to setup the remote repo
+            // check to see if sevrer is available
             RemoteManager rman = RemoteManager.GetInstance();
             IRemote remote = rman.Connect(sd);
             if (!remote.IsConnected()) // error
@@ -103,30 +99,10 @@ namespace GitUtility.Forms
                 return;
             }
 
-            IStream stream = remote.GetStream();
-            string repoLoc = sd.GetLocation() + "/" + repoName;
-            stream.Execute("mkdir -p " + repoLoc);
-            stream.Execute("cd " + repoLoc);
-            bool success = stream.Execute("git init --bare");
-            if (!success) // error
-            {
-                DialogUtil.Message("Error: Could not execute command");
-                return;
-            }
-            
-            // make local directory
-            Directory.CreateDirectory(localDir);
-
-            if (!Directory.Exists(localDir)) // error
-            {
-                DialogUtil.Message("Error: Could not create local repository");
-                return;
-            }
-
-            // make and run the script for initializing a new local repo
+            // make and run the script for downloading the selected repository
             string remoteDir = sd.GetServerLoginString() + "/" + repoName;
             RepoDetails repo = new RepoDetails(repoName, sd.GetName(), remoteDir, localDir);
-            string script = ScriptBuilder.NewScript(repo);
+            string script = ScriptBuilder.CloneScript(repo,sd);
             Executable exe = new Executable("expect.exe", script).Start();
             exe.WaitForExit();
 
@@ -143,7 +119,7 @@ namespace GitUtility.Forms
         {
             ProperClose();
         }
-        
+
         private void ButtonBrowse_Click(object sender, EventArgs e)
         {
             using (var fbd = new FolderBrowserDialog())
@@ -161,7 +137,6 @@ namespace GitUtility.Forms
                 }
             }
         }
-
         private void TextBoxRepoName_KeyPress(object sender, KeyPressEventArgs e)
         {
             TextBoxRepoName.ForeColor = Color.Black;
@@ -175,7 +150,7 @@ namespace GitUtility.Forms
                 TextBoxRepoName.ForeColor = Color.Gray;
             }
         }
-        
+
         private void TextBoxRepoName_Clicked(object sender, EventArgs e)
         {
             if (((TextBox)sender).Text == "Repository Name")
@@ -183,11 +158,6 @@ namespace GitUtility.Forms
                 TextBoxRepoName.Text = "";
                 TextBoxRepoName.ForeColor = Color.Black;
             }
-        }
-
-        private void FormNewRepo_Closing(object sender, FormClosingEventArgs e)
-        {
-            EventManager.GetInstance().RemoveListener(this);
         }
     }
 }

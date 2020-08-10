@@ -48,3 +48,22 @@ D:\Development\C#\workspace\git\gitutility\Git Utility\obj\x64\Debug\Git Utility
 D:\Development\C#\workspace\git\gitutility\Git Utility\obj\x64\Debug\GitUtility.exe
 D:\Development\C#\workspace\git\gitutility\Git Utility\obj\x64\Debug\GitUtility.pdb
 D:\Development\C#\workspace\git\gitutility\Git Utility\obj\x64\Debug\Git Utility.csprojAssemblyReference.cache
+F:\Development\C#\workspace\git\gitutility\Git Utility\bin\x64\Debug\GitUtility.exe.config
+F:\Development\C#\workspace\git\gitutility\Git Utility\bin\x64\Debug\GitUtility.exe
+F:\Development\C#\workspace\git\gitutility\Git Utility\bin\x64\Debug\GitUtility.pdb
+F:\Development\C#\workspace\git\gitutility\Git Utility\bin\x64\Debug\Renci.SshNet.dll
+F:\Development\C#\workspace\git\gitutility\Git Utility\bin\x64\Debug\Renci.SshNet.xml
+F:\Development\C#\workspace\git\gitutility\Git Utility\obj\x64\Debug\Git Utility.csprojAssemblyReference.cache
+F:\Development\C#\workspace\git\gitutility\Git Utility\obj\x64\Debug\GitUtility.Forms.FormCloneRepo.resources
+F:\Development\C#\workspace\git\gitutility\Git Utility\obj\x64\Debug\GitUtility.Forms.FormConfigServers.resources
+F:\Development\C#\workspace\git\gitutility\Git Utility\obj\x64\Debug\GitUtility.Forms.FormGitUtility.resources
+F:\Development\C#\workspace\git\gitutility\Git Utility\obj\x64\Debug\GitUtility.Forms.FormConfigRepos.resources
+F:\Development\C#\workspace\git\gitutility\Git Utility\obj\x64\Debug\GitUtility.Forms.FormNewRepo.resources
+F:\Development\C#\workspace\git\gitutility\Git Utility\obj\x64\Debug\GitUtility.Forms.FormTerminal.resources
+F:\Development\C#\workspace\git\gitutility\Git Utility\obj\x64\Debug\GitUtility.Properties.Resources.resources
+F:\Development\C#\workspace\git\gitutility\Git Utility\obj\x64\Debug\Git Utility.csproj.GenerateResource.cache
+F:\Development\C#\workspace\git\gitutility\Git Utility\obj\x64\Debug\Git Utility.csproj.CoreCompileInputs.cache
+F:\Development\C#\workspace\git\gitutility\Git Utility\obj\x64\Debug\Git Utility.csproj.CopyComplete
+F:\Development\C#\workspace\git\gitutility\Git Utility\obj\x64\Debug\GitUtility.exe
+F:\Development\C#\workspace\git\gitutility\Git Utility\obj\x64\Debug\GitUtility.pdb
+F:\Development\C#\workspace\git\gitutility\Git Utility\obj\x64\Debug\GitUtility.Forms.FormGetRemoteRepo.resources

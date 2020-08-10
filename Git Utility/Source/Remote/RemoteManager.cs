@@ -1,4 +1,5 @@
 ﻿using GitUtility.Config;
+
 using System.Collections.Generic;
 
 namespace GitUtility.Remote

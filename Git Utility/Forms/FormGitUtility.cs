@@ -174,9 +174,9 @@ namespace GitUtility.Forms
             var item = ListBoxRepoChanges.SelectedItem;
             if (item == null) return;
 
-            RepoDetails rd   = ReposConfig.GetInstance().GetSelected();
             string selectedFile = item.ToString();
-            string selectedPath = rd.GetLocal().Replace(@"\","/") + "/" + selectedFile;
+            RepoDetails rd = ReposConfig.GetInstance().GetSelected();
+            //string selectedPath = rd.GetLocal().Replace(@"\","/") + "/" + selectedFile;
 
             // get changes in the selected file
             Repository rep = new Repository(rd);
@@ -227,6 +227,7 @@ namespace GitUtility.Forms
 
         /// <summary>
         /// Creates and executes a push script to upload commits to the repository's server
+        /// TODO: add notification to inform about queued commits
         /// </summary>
         private void ButtonPushCommits_Click(object sender, EventArgs e)
         {
@@ -260,14 +261,12 @@ namespace GitUtility.Forms
             new FormNewRepo().ShowDialog();
         }
 
-        private void MenuItemCloneRepo_Click(object sender, EventArgs e)
-        {
-            new FormCloneRepo().ShowDialog(); // TODO make clone dialog
-        }
-
+        /*
+         * Add a local repository to the git server
+         */
         private void MenuItemAddLocalRepo_Click(object sender, EventArgs e)
         {
-            string res = DialogUtil.BrowseFolder();
+            string res = DialogUtil.BrowseFolder("Select an existing repository to upload to the git server.");
             if (res == null) return;
             if (FileUtil.Exists(res))
             {
@@ -282,6 +281,19 @@ namespace GitUtility.Forms
                 DialogUtil.Message("Repository Added", "Don't forget to set a remote server in the repository configuration.");
                 EventManager.Fire(EventCode.REFRESH_REPOS);
             }
+        }
+
+        /*
+         * download a repository from a server to your machine
+         */
+        private void MenuItemGetRemoteRepo_Click(object sender, EventArgs e)
+        {
+            new FormGetRemoteRepo().ShowDialog();
+        }
+
+        private void MenuItemCloneRepo_Click(object sender, EventArgs e)
+        {
+            new FormCloneRepo().ShowDialog(); // TODO make clone dialog
         }
 
         private void MenuItemExit_Click(object sender, EventArgs e)
